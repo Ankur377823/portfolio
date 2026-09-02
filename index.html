@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankur Kumar Singh | Software Engineer</title>
+  <meta name="description" content="Portfolio of Ankur Kumar Singh - Software Engineer, NIT Calicut student, and Intern at Wingback Security." />
+  <meta name="author" content="Ankur Kumar Singh" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="fixed-nav-wrapper">
+    <nav class="navbar container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-text">Ankur Singh</span>
+      </a>
+
+      <div class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn-primary btn-sm">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Open for Software Engineering & Backend Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm Ankur Kumar Singh
+          </h1>
+
+          <p class="hero-subtitle">
+            I'm a <strong>Software Engineering Intern at Wingback Security</strong> working on AI runtime red-team scanning and platform security, and a student at <strong>NIT Calicut</strong>. I build fast backend web applications, Python REST APIs, and machine learning tools, with <strong>700+ problems solved on LeetCode</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn-primary">
+              <i class="fa-solid fa-folder-open"></i>
+              <span>View My Projects</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i class="fa-regular fa-envelope"></i>
+              <span>Contact Me</span>
+            </a>
+            <button class="btn-outline" id="quick-copy-email-btn" data-copy="ankurrajput7050@gmail.com">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Email</span>
+            </button>
+          </div>
+
+          <!-- Social Links -->
+          <div class="hero-social-pills">
+            <a href="https://github.com/Ankur377823" target="_blank" rel="noopener noreferrer" class="social-pill" title="GitHub Profile">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" class="social-pill highlight-lc" title="LeetCode Profile">
+              <i class="fa-solid fa-code"></i>
+              <span>LeetCode (700+)</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" class="social-pill highlight-li" title="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.kaggle.com/ankur2006" target="_blank" rel="noopener noreferrer" class="social-pill highlight-kg" title="Kaggle Profile">
+              <i class="fa-brands fa-kaggle"></i>
+              <span>Kaggle</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-card-container">
+            <div class="avatar-card">
+              <img src="assets/profile_photo.jpg" alt="Ankur Kumar Singh" class="avatar-img" />
+              <div class="avatar-info-bar">
+                <h3>Ankur Kumar Singh</h3>
+                <p>Software Engineering Intern @ Wingback Security</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY STATS -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrapper cyan-glow">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="700">0</h3>
+              <p class="stat-label">LeetCode Problems Solved</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper emerald-glow">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number" data-target="3">0</h3>
+              <p class="stat-label">Production Web Projects</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper purple-glow">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number-text">8.24</h3>
+              <p class="stat-label">CGPA at NIT Calicut</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-wrapper amber-glow">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-number-text">2nd Place</h3>
+              <p class="stat-label">Yuva Manthan Hackathon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">ABOUT ME</span>
+          <h2 class="section-title">A Brief Intro</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card main-bio">
+            <h3>Hello! I'm Ankur</h3>
+            <p>
+              I am a student at <strong>NIT Calicut</strong> with a strong passion for programming and software engineering. Over the past few years, I've taught myself full-stack backend development in Python, web API design, and machine learning.
+            </p>
+            <p>
+              Right now, I'm interning at <strong>Wingback Security</strong>, where I work on AI security tools that protect artificial intelligence applications from malicious inputs and data leaks.
+            </p>
+            <p>
+              When I'm not coding projects or interning, I spend time practicing algorithms on LeetCode to keep my data structures and problem-solving skills sharp.
+            </p>
+
+            <div class="bio-highlights">
+              <span class="bio-pill"><i class="fa-solid fa-check text-emerald"></i> Self-Taught Developer</span>
+              <span class="bio-pill"><i class="fa-solid fa-check text-cyan"></i> Python & FastAPI Expert</span>
+              <span class="bio-pill"><i class="fa-solid fa-check text-purple"></i> AI Security Intern</span>
+              <span class="bio-pill"><i class="fa-solid fa-check text-amber"></i> Quick Learner</span>
+            </div>
+          </div>
+
+          <div class="about-card what-i-do">
+            <h3>What I Do</h3>
+            
+            <div class="pillar-item">
+              <div class="pillar-icon">
+                <i class="fa-solid fa-server text-cyan"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>Backend Web Development</h4>
+                <p>Building clean, fast REST APIs using Python, FastAPI, and databases like MongoDB and SQLite.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon">
+                <i class="fa-solid fa-shield-halved text-emerald"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>AI Safety & Tools</h4>
+                <p>Developing security adapters that check AI prompts and responses for sensitive data and safety compliance.</p>
+              </div>
+            </div>
+
+            <div class="pillar-item">
+              <div class="pillar-icon">
+                <i class="fa-solid fa-brain text-purple"></i>
+              </div>
+              <div class="pillar-content">
+                <h4>Machine Learning & Analytics</h4>
+                <p>Creating predictive ML models with PyTorch, Scikit-Learn, and hosting them on cloud servers with Docker.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section-padding bg-subtle">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">WORK EXPERIENCE</span>
+          <h2 class="section-title">Where I've Worked</h2>
+        </div>
+
+        <div class="experience-list">
+          <!-- Experience Item 1 -->
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <span class="company-name text-cyan">Wingback Security</span>
+                <h3 class="role-title">Software Engineering Intern (AI Security)</h3>
+              </div>
+              <span class="exp-date">June 2026 – Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Enhanced Wingback's core security platform, building and improving key functionalities including <strong>AI Runtime Red-Team Scanning</strong> and real-time vulnerability detection.</li>
+              <li>Built a Python FastAPI security integration for LiteLLM that checks AI prompts for prompt injections, PII exfiltration, and secret leakage across model providers (OpenAI, Claude, etc.).</li>
+              <li>Engineered automated monitoring, safety blocking, and resilient fail-closed/fail-open policies that protect AI applications with zero client code modifications.</li>
+              <li>Wrote 32 comprehensive unit and integration tests in Pytest to validate threat detection pathways and response latency.</li>
+            </ul>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>LiteLLM</span>
+              <span>AI Red-Team Scanning</span>
+              <span>Pytest</span>
+              <span>AI Security</span>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <span class="company-name text-purple">Google Developer Student Club (GDSC), NIT Calicut</span>
+                <h3 class="role-title">AI/ML Team Member</h3>
+              </div>
+              <span class="exp-date">Jan 2025 – Present</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Collaborated with student developers to build practical machine learning applications and computer vision projects.</li>
+              <li>Organized coding workshops to help fellow college students learn Python, PyTorch, and artificial intelligence basics.</li>
+            </ul>
+            <div class="tech-tags">
+              <span>PyTorch</span>
+              <span>Machine Learning</span>
+              <span>Computer Vision</span>
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section-padding">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">MY PROJECTS</span>
+          <h2 class="section-title">Featured Work</h2>
+          <p class="section-subtitle">Here are my personal software projects with source code and live working demos.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <img src="assets/project_medication.jpg" alt="Medication Reconciliation Service" />
+            </div>
+            <div class="project-card-body">
+              <span class="project-tag-badge">Clinical Healthcare API</span>
+              <h3 class="project-title">Medication Reconciliation Service</h3>
+              <p class="project-desc">
+                A web service that ingests patient medication records to automatically spot dosage mistakes, duplicate drugs, and dangerous medication conflicts.
+              </p>
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>MongoDB</span>
+                <span>Pytest (69 tests)</span>
+              </div>
+              <div class="project-links">
+                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="medication">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="https://github.com/Ankur377823/medication-reconciliation-service" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <a href="https://medication-reconciliation-service.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <img src="assets/project_carprice.jpg" alt="Car Price Prediction API" />
+            </div>
+            <div class="project-card-body">
+              <span class="project-tag-badge">Machine Learning API</span>
+              <h3 class="project-title">Car Price Prediction API</h3>
+              <p class="project-desc">
+                A machine learning web service built with Scikit-Learn that predicts used car prices instantly. Features fast Redis caching and live monitoring.
+              </p>
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>Scikit-Learn</span>
+                <span>Redis</span>
+                <span>Docker</span>
+              </div>
+              <div class="project-links">
+                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="carprice">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="https://github.com/Ankur377823/fastapi-Project" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <a href="https://fastapi-project-lux4.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-img-box">
+              <img src="assets/project_botpress.jpg" alt="Botpress Connector & Red-Team Scanner" />
+            </div>
+            <div class="project-card-body">
+              <span class="project-tag-badge">Security & Testing</span>
+              <h3 class="project-title">Botpress Chatbot Security Scanner</h3>
+              <p class="project-desc">
+                An automated security testing tool for Botpress chatbots. It tests AI bots against prompt injections and data leaks, recording safety scores.
+              </p>
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>Botpress</span>
+                <span>SQLite</span>
+                <span>Pytest (26 tests)</span>
+              </div>
+              <div class="project-links">
+                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="botpress">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+                <a href="https://github.com/Ankur377823/Botpress-Connector" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
+                  <i class="fa-brands fa-github"></i> Code
+                </a>
+                <a href="https://botpress-connector-29gl.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-padding bg-subtle">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">SKILLS & TOOLS</span>
+          <h2 class="section-title">What I Work With</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group-card">
+            <h3><i class="fa-solid fa-code text-cyan"></i> Programming Languages</h3>
+            <div class="skill-chips">
+              <span class="chip">Python</span>
+              <span class="chip">C++</span>
+              <span class="chip">Go</span>
+              <span class="chip">SQL</span>
+            </div>
+          </div>
+
+          <div class="skill-group-card">
+            <h3><i class="fa-solid fa-server text-purple"></i> Web & Backend</h3>
+            <div class="skill-chips">
+              <span class="chip">FastAPI</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">LiteLLM</span>
+              <span class="chip">Pytest</span>
+              <span class="chip">Pydantic</span>
+            </div>
+          </div>
+
+          <div class="skill-group-card">
+            <h3><i class="fa-solid fa-brain text-emerald"></i> Machine Learning</h3>
+            <div class="skill-chips">
+              <span class="chip">PyTorch</span>
+              <span class="chip">TensorFlow</span>
+              <span class="chip">Scikit-Learn</span>
+              <span class="chip">NumPy & Pandas</span>
+            </div>
+          </div>
+
+          <div class="skill-group-card">
+            <h3><i class="fa-solid fa-database text-amber"></i> Databases & Tools</h3>
+            <div class="skill-chips">
+              <span class="chip">Docker</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Redis</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">Git & GitHub</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LeetCode Banner -->
+        <div class="leetcode-banner">
+          <div class="leetcode-content">
+            <i class="fa-solid fa-code text-amber banner-icon"></i>
+            <div>
+              <h3>700+ LeetCode DSA Solved</h3>
+              <p>Consistently practicing problem solving, algorithms, and dynamic programming.</p>
+            </div>
+          </div>
+          <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+            <span>View LeetCode Profile</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section-padding">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">EDUCATION</span>
+          <h2 class="section-title">School & Achievements</h2>
+        </div>
+
+        <div class="edu-grid">
+          <div class="edu-card">
+            <span class="edu-year">2023 – 2027</span>
+            <h3>National Institute of Technology Calicut (NIT Calicut)</h3>
+            <p class="edu-degree">B.Tech Student &bull; <strong>CGPA: 8.24 / 10</strong></p>
+            <p class="edu-desc">Self-taught software engineer building web applications, AI security tools, and practicing data structures.</p>
+          </div>
+
+          <div class="edu-card">
+            <span class="edu-year">National Level</span>
+            <h3>Flipkart GRiD 8.0 — Round 3 Qualifier</h3>
+            <p class="edu-degree">Software Development Track</p>
+            <p class="edu-desc">Qualified through multiple national algorithmic and coding elimination rounds competing against thousands of engineering students across India.</p>
+          </div>
+
+          <div class="edu-card">
+            <span class="edu-year">2024</span>
+            <h3>2nd Place Winner &bull; Yuva Manthan Hackathon</h3>
+            <p class="edu-degree">Hackathon Milestone</p>
+            <p class="edu-desc">Won 2nd place for building software solutions under tight competition deadlines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section-padding bg-subtle">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="section-tag">GET IN TOUCH</span>
+          <h2 class="section-title">Contact Me</h2>
+          <p class="section-subtitle">Have a role, project, or question? Feel free to send me a message!</p>
+        </div>
+
+        <div class="contact-cards-grid">
+          <div class="info-card" data-copy="ankurrajput7050@gmail.com">
+            <i class="fa-regular fa-envelope text-cyan"></i>
+            <div>
+              <span class="info-label">Email (Click to copy)</span>
+              <span class="info-value">ankurrajput7050@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="info-card" data-copy="+918891079725">
+            <i class="fa-solid fa-phone text-emerald"></i>
+            <div>
+              <span class="info-label">Phone (Click to copy)</span>
+              <span class="info-value">+91-8891079725</span>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <i class="fa-solid fa-location-dot text-purple"></i>
+            <div>
+              <span class="info-label">Location</span>
+              <span class="info-value">NIT Calicut, Kozhikode, Kerala, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Ankur Kumar Singh. All rights reserved.</p>
+      <a href="#hero" class="back-to-top" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="project-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-dynamic-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATIONS -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
