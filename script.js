@@ -16,16 +16,49 @@ function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileActionBtns = document.querySelectorAll('.mobile-nav-actions a');
 
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+    const icon = mobileToggle.querySelector('i');
+
+    const toggleMenu = () => {
+      const isActive = navMenu.classList.toggle('active');
+      if (icon) {
+        if (isActive) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-xmark');
+        } else {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
+      }
+    };
+
+    const closeMenu = () => {
+      navMenu.classList.remove('active');
+      if (icon) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
 
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    mobileActionBtns.forEach(btn => {
+      btn.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        closeMenu();
+      }
     });
   }
 }
