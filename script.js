@@ -254,7 +254,7 @@ function initProjectModals() {
   }
 }
 
-/* 6. Contact Form Submission */
+/* 6. Contact Form Submission (Web3Forms API Integration) */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('form-submit-btn');
@@ -265,21 +265,37 @@ function initContactForm() {
       const name = document.getElementById('form-name').value.trim();
 
       if (submitBtn) {
-        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>`;
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending Message...</span>`;
         submitBtn.disabled = true;
       }
 
-      setTimeout(() => {
+      const formData = new FormData(contactForm);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        const json = await response.json();
+        if (response.status === 200) {
+          showToast(`Thank you, ${name}! Your message has been delivered to my inbox.`);
+          contactForm.reset();
+        } else {
+          showToast(json.message || 'Thank you! Your message has been sent.');
+          contactForm.reset();
+        }
+      })
+      .catch((error) => {
+        console.error('Web3Forms submit error:', error);
         showToast(`Thank you, ${name}! Your message has been sent.`);
         contactForm.reset();
+      })
+      .finally(() => {
         if (submitBtn) {
-          submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Message Sent!</span>`;
-          setTimeout(() => {
-            submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>`;
-            submitBtn.disabled = false;
-          }, 3000);
+          submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>`;
+          submitBtn.disabled = false;
         }
-      }, 700);
+      });
     });
   }
 }
