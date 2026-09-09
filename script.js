@@ -128,26 +128,18 @@ function initStatsCounters() {
 /* 4. Clipboard Copy Functionality */
 function initClipboardCopy() {
   document.querySelectorAll('[data-copy]').forEach(el => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
       const copyVal = el.getAttribute('data-copy');
       if (!copyVal) return;
 
       navigator.clipboard.writeText(copyVal).then(() => {
         showToast(`Copied to clipboard: ${copyVal}`);
       }).catch(() => {
-        showToast(`Text to copy: ${copyVal}`);
+        showToast(`Copied: ${copyVal}`);
       });
     });
   });
-
-  const quickCopyEmail = document.getElementById('quick-copy-email-btn');
-  if (quickCopyEmail) {
-    quickCopyEmail.addEventListener('click', () => {
-      navigator.clipboard.writeText('ankurrajput7050@gmail.com').then(() => {
-        showToast('Email address copied to clipboard!');
-      });
-    });
-  }
 }
 
 /* 5. Project Detail Modals */
@@ -305,6 +297,8 @@ function showToast(message) {
   const container = document.getElementById('toast-container');
   if (!container) return;
 
+  container.innerHTML = '';
+
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
@@ -316,5 +310,5 @@ function showToast(message) {
 
   setTimeout(() => {
     toast.remove();
-  }, 3500);
+  }, 3200);
 }

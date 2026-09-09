@@ -4,33 +4,33 @@
    ========================================================================== */
 
 :root {
-  --bg-dark: #0b0f19;        /* Soft deep navy/slate - ultra clean backdrop */
-  --bg-subtle: #111827;      /* Clean alternate section background */
-  --bg-card: #182234;        /* Soft card surface with excellent contrast */
-  --bg-card-hover: #202b42;  /* Smooth interactive hover state */
+  --bg-dark: #07090e;        /* Deep obsidian dark mode backdrop */
+  --bg-subtle: #0d111a;      /* Sleek subtle section background */
+  --bg-card: #121824;        /* Premium card surface */
+  --bg-card-hover: #192234;  /* Smooth interactive card hover */
   
-  --border-color: rgba(255, 255, 255, 0.09);   /* Soft subtle borders */
+  --border-color: rgba(255, 255, 255, 0.08);   /* Refined glassmorphic border */
   --border-accent: #38bdf8;  /* Cyan accent border */
   
-  --text-main: #f8fafc;      /* Crisp pure light slate text */
-  --text-muted: #cbd5e1;     /* Slate 300 - High contrast readable body text */
-  --text-dim: #94a3b8;       /* Slate 400 - Clear secondary labels */
+  --text-main: #f9fafb;      /* Bright white heading text */
+  --text-muted: #9ca3af;     /* High clarity comfortable body text */
+  --text-dim: #6b7280;       /* Subtle secondary labels */
   
   --cyan: #38bdf8;
   --emerald: #34d399;
   --purple: #c084fc;
   --amber: #fbbf24;
   
-  --font-heading: 'Inter', -apple-system, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  --radius-sm: 6px;
-  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
   --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --transition: all 0.25s ease;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *, *::before, *::after {
@@ -329,6 +329,12 @@ a {
 
 .social-pill:hover i {
   transform: scale(1.15);
+}
+
+.social-pill.highlight-ig:hover {
+  border-color: rgba(225, 48, 108, 0.6);
+  color: #e1306c;
+  box-shadow: 0 6px 16px rgba(225, 48, 108, 0.2);
 }
 
 .social-pill[title*="GitHub"]:hover {
@@ -1047,31 +1053,43 @@ a {
 /* Toast Notification */
 .toast-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2000;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
 }
 
 .toast {
-  background: var(--bg-card);
-  border: 1px solid var(--cyan);
+  background: rgba(12, 18, 30, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   color: var(--text-main);
-  padding: 0.85rem 1.2rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
-  display: flex;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.9rem;
-  animation: slideIn 0.3s ease;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: toastPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
 }
 
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+@keyframes toastPop {
+  from {
+    transform: translateY(-15px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Mobile Nav Actions - hidden on desktop */
