@@ -1,11 +1,14 @@
 /* ==========================================================================
-   ANKUR KUMAR SINGH - PORTFOLIO INTERACTIVITY & SCRIPTS
+   ANKUR KUMAR SINGH - PORTFOLIO INTERACTIVITY & ANIMATION ENGINE
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollSpy();
+  initScrollReveal();
   initStatsCounters();
+  initSkillTabs();
+  initFloatingScrollTop();
   initClipboardCopy();
   initProjectModals();
   initContactForm();
@@ -70,7 +73,7 @@ function initScrollSpy() {
 
   window.addEventListener('scroll', () => {
     let current = '';
-    const scrollPos = window.scrollY + 180;
+    const scrollPos = window.scrollY + 200;
 
     sections.forEach(section => {
       const top = section.offsetTop;
@@ -86,12 +89,42 @@ function initScrollSpy() {
         link.classList.add('active');
       }
     });
+  }, { passive: true });
+}
+
+/* 3. Framer-Style Scroll Reveal Animation Engine */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('active'));
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  revealElements.forEach(el => {
+    if (el.closest('#hero')) {
+      setTimeout(() => el.classList.add('active'), 100);
+    } else {
+      revealObserver.observe(el);
+    }
   });
 }
 
-/* 3. Number Counter Animation for Stats */
+/* 4. Number Counter Animation for Stats */
 function initStatsCounters() {
-  const counters = document.querySelectorAll('.stat-number');
+  const counters = document.querySelectorAll('[data-target]');
   let animated = false;
 
   const observer = new IntersectionObserver((entries) => {
@@ -110,7 +143,7 @@ function initStatsCounters() {
           const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
-              counter.textContent = target + '+';
+              counter.textContent = target;
               clearInterval(timer);
             } else {
               counter.textContent = Math.floor(current);
@@ -119,13 +152,65 @@ function initStatsCounters() {
         });
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.25 });
 
-  const statsSection = document.querySelector('.stats-section');
-  if (statsSection) observer.observe(statsSection);
+  const aboutSection = document.getElementById('about');
+  if (aboutSection) observer.observe(aboutSection);
 }
 
-/* 4. Clipboard Copy Functionality */
+/* 5. Interactive Skill Filter Tabs */
+function initSkillTabs() {
+  const tabBtns = document.querySelectorAll('.skill-tab-btn');
+  const skillGroups = document.querySelectorAll('.skills-group');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      skillGroups.forEach(group => {
+        const category = group.getAttribute('data-category');
+        if (filter === 'all' || category === filter || (filter === 'tools' && (category === 'tools' || category === 'databases'))) {
+          group.style.display = 'block';
+          group.style.opacity = '0';
+          group.style.transform = 'translateY(12px)';
+          requestAnimationFrame(() => {
+            group.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+            group.style.opacity = '1';
+            group.style.transform = 'translateY(0)';
+          });
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+/* 6. Floating Scroll to Top Button */
+function initFloatingScrollTop() {
+  const topBtn = document.getElementById('floating-top-btn');
+  if (!topBtn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+      topBtn.classList.add('visible');
+    } else {
+      topBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  topBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+/* 7. Clipboard Copy Functionality */
 function initClipboardCopy() {
   document.querySelectorAll('[data-copy]').forEach(el => {
     el.addEventListener('click', (e) => {
@@ -142,7 +227,7 @@ function initClipboardCopy() {
   });
 }
 
-/* 5. Project Detail Modals */
+/* 8. Project Detail Modals */
 const projectDetails = {
   medication: {
     title: "Medication Reconciliation Service",
@@ -204,19 +289,27 @@ function initProjectModals() {
 
       modalContent.innerHTML = `
         <div class="modal-body">
-          <img src="${data.image}" alt="${data.title}" style="width:100%; border-radius:10px; margin-bottom:1rem; height:220px; object-fit:cover;" />
-          <span style="color:var(--cyan); font-size:0.8rem; font-weight:700; text-transform:uppercase;">${data.badge}</span>
-          <h2 style="font-size:1.5rem; margin:0.3rem 0 0.8rem;">${data.title}</h2>
-          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">${data.overview}</p>
+          <div style="background:#08090e; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 20px; margin-bottom:1.2rem; font-family:'SF Mono',Monaco,monospace; font-size:0.85rem; color:#cbd5e1;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:8px;">
+              <span style="color:#64748b;">${data.title} // architecture</span>
+              <span style="color:#34d399; font-weight:700;">● Production Ready</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              ${data.tags.map(t => `<span style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:9999px; font-size:0.75rem; color:#f8fafc;">${t}</span>`).join('')}
+            </div>
+          </div>
+          <span style="color:var(--accent-red); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">${data.badge}</span>
+          <h2 style="font-size:1.6rem; margin:0.4rem 0 0.8rem; color:#ffffff;">${data.title}</h2>
+          <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.2rem; line-height:1.7;">${data.overview}</p>
           
-          <h4 style="font-size:1rem; margin-bottom:0.5rem; color:var(--text-main);">Key Highlights:</h4>
-          <ul style="padding-left:1.2rem; color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+          <h4 style="font-size:1rem; margin-bottom:0.6rem; color:#ffffff;">Key Technical Highlights:</h4>
+          <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem; margin-bottom:1.5rem; line-height:1.7;">
             ${data.features.map(f => `<li style="margin-bottom:0.4rem;">${f}</li>`).join('')}
           </ul>
 
           <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-            <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-sm"><i class="fa-brands fa-github"></i> View GitHub Code</a>
-            <a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
+            <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-brands fa-github"></i> View GitHub Code</a>
+            <a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
           </div>
         </div>
       `;
@@ -246,7 +339,7 @@ function initProjectModals() {
   }
 }
 
-/* 6. Contact Form Submission (Web3Forms API Integration) */
+/* 9. Contact Form Submission (Web3Forms API Integration) */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('form-submit-btn');
@@ -270,7 +363,7 @@ function initContactForm() {
       .then(async (response) => {
         const json = await response.json();
         if (response.status === 200) {
-          showToast(`Thank you, ${name}! Your message has been delivered to my inbox.`);
+          showToast(`Thank you, ${name}! Your message has been delivered.`);
           contactForm.reset();
         } else {
           showToast(json.message || 'Thank you! Your message has been sent.');
@@ -292,7 +385,7 @@ function initContactForm() {
   }
 }
 
-/* 7. Toast Notification Helper */
+/* 10. Toast Notification Helper */
 function showToast(message) {
   const container = document.getElementById('toast-container');
   if (!container) return;
@@ -302,7 +395,7 @@ function showToast(message) {
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
-    <i class="fa-solid fa-circle-check text-cyan"></i>
+    <i class="fa-solid fa-circle-check"></i>
     <span>${message}</span>
   `;
 

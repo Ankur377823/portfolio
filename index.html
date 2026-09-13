@@ -4,42 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ankur Kumar Singh | Software Engineer</title>
-  <meta name="description" content="Portfolio of Ankur Kumar Singh - Software Engineer, NIT Calicut student, and Intern at Wingback Security." />
+  <meta name="description" content="Portfolio of Ankur Kumar Singh - Software Engineer, NIT Calicut, and SWE Intern at Wingback Security." />
   <meta name="author" content="Ankur Kumar Singh" />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Inter for unmatched legibility & Playfair Display for editorial accent -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Devicon CDN for Official Brand Colored Logos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header & Navigation -->
+  <!-- Ambient Red Atmospheric Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- FLOATING PILL NAVBAR (CENTERED AT TOP) -->
   <header class="fixed-nav-wrapper">
-    <nav class="navbar container">
+    <nav class="navbar">
       <a href="#hero" class="nav-logo">
-        <span class="logo-text">Ankur Kumar Singh</span>
+        <span class="logo-text">Ankur<span class="dot-accent">.</span></span>
       </a>
 
       <div class="nav-links" id="nav-menu">
+        <a href="#hero" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
-        <a href="#experience" class="nav-link">Experience</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
         <a href="#education" class="nav-link">Education</a>
         <a href="#contact" class="nav-link">Contact</a>
+        <a href="assets/Ankur_Kumar_Singh_Resume_Latest.pdf?v=20260914" target="_blank" rel="noopener noreferrer" class="nav-link nav-resume-link">Resume</a>
 
         <div class="mobile-nav-actions">
-          <a href="assets/Ankur_Singh_Resume.pdf" target="_blank" download="Ankur_Singh_Resume.pdf" class="btn-outline btn-sm">
-            <i class="fa-solid fa-file-arrow-down"></i>
+          <a href="assets/Ankur_Kumar_Singh_Resume_Latest.pdf?v=20260914" target="_blank" rel="noopener noreferrer" class="btn-outline-red btn-sm">
+            <i class="fa-regular fa-file-lines"></i>
             <span>Resume</span>
           </a>
-          <a href="#contact" class="btn-primary btn-sm mobile-contact-btn">
+          <a href="#contact" class="btn-primary-pill btn-sm mobile-contact-btn">
             <span>Let's Talk</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -47,14 +55,6 @@
       </div>
 
       <div class="nav-actions">
-        <a href="assets/Ankur_Singh_Resume.pdf" target="_blank" download="Ankur_Singh_Resume.pdf" class="btn-outline btn-sm desktop-only-btn">
-          <i class="fa-solid fa-file-arrow-down"></i>
-          <span>Resume</span>
-        </a>
-        <a href="#contact" class="btn-primary btn-sm desktop-only-btn">
-          <span>Let's Talk</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -62,179 +62,408 @@
     </nav>
   </header>
 
+  <!-- FLOATING RIGHT SOCIAL DOCK (PERSISTENT AT RIGHT CORNER) -->
+  <aside class="floating-social-dock" aria-label="Social links">
+    <a href="https://github.com/Ankur377823" target="_blank" rel="noopener noreferrer" title="GitHub Profile">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" title="LeetCode Profile">
+      <i class="fa-solid fa-code"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.kaggle.com/ankur2006" target="_blank" rel="noopener noreferrer" title="Kaggle Profile">
+      <i class="fa-brands fa-kaggle"></i>
+    </a>
+    <a href="mailto:ankurrajput7050@gmail.com" title="Send Email">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+  </aside>
+
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (MATCHING ABHAY RANA CLEAN DISPLAY) -->
     <section id="hero" class="hero-section">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <div class="status-badge">
-            <span>Open for Software Engineering & Backend Roles</span>
+      <div class="container hero-container text-center">
+        <div class="hero-content reveal">
+          <p class="hero-greeting">Hey, I'm</p>
+          <h1 class="hero-title">ANKUR KUMAR SINGH</h1>
+
+          <div class="hero-badge-pill-wrap">
+            <span class="hero-badge-pill">Software Engineer</span>
           </div>
 
-          <h1 class="hero-title">
-            Hi, I'm Ankur Kumar Singh
-          </h1>
-
-          <p class="hero-subtitle">
-            Software Engineering Intern at <strong>Wingback Security</strong> & B.Tech student at <strong>NIT Calicut</strong>. I build high-performance backend systems, REST APIs, and AI security tools.
+          <p class="hero-impact-text">
+            I build and craft high-performance systems that deliver <span class="impact-italic">real impact</span>
           </p>
 
           <div class="hero-cta-group">
-            <a href="assets/Ankur_Singh_Resume.pdf" target="_blank" download="Ankur_Singh_Resume.pdf" class="btn-primary">
-              <i class="fa-solid fa-file-arrow-down"></i>
-              <span>Download Resume</span>
+            <a href="#contact" class="btn-primary-pill">
+              <span>Let's Connect</span>
+              <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#projects" class="btn-secondary">
-              <i class="fa-solid fa-folder-open"></i>
-              <span>View My Projects</span>
-            </a>
-            <button class="btn-outline" id="quick-copy-email-btn" data-copy="ankurrajput7050@gmail.com">
+
+            <button class="btn-email-pill" id="quick-copy-email-btn" data-copy="ankurrajput7050@gmail.com">
+              <span>ankurrajput7050@gmail.com</span>
               <i class="fa-regular fa-copy"></i>
-              <span>Copy Email</span>
             </button>
-          </div>
 
-          <!-- Social Links -->
-          <div class="hero-social-pills">
-            <a href="https://github.com/Ankur377823" target="_blank" rel="noopener noreferrer" class="social-pill" title="GitHub Profile">
-              <i class="fa-brands fa-github"></i>
-              <span>GitHub</span>
+            <a href="assets/Ankur_Kumar_Singh_Resume_Latest.pdf?v=20260914" target="_blank" rel="noopener noreferrer" class="btn-resume-pill">
+              <i class="fa-regular fa-file-lines"></i>
+              <span>View Resume</span>
             </a>
-            <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" class="social-pill highlight-lc" title="LeetCode Profile">
-              <i class="fa-solid fa-code"></i>
-              <span>LeetCode</span>
-            </a>
-            <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" class="social-pill highlight-li" title="LinkedIn Profile">
-              <i class="fa-brands fa-linkedin"></i>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://www.kaggle.com/ankur2006" target="_blank" rel="noopener noreferrer" class="social-pill highlight-kg" title="Kaggle Profile">
-              <i class="fa-brands fa-kaggle"></i>
-              <span>Kaggle</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="avatar-card-container">
-            <div class="avatar-card">
-              <img src="assets/profile_photo.jpg" alt="Ankur Kumar Singh" class="avatar-img" />
-              <div class="avatar-info-bar">
-                <h3>Ankur Kumar Singh</h3>
-                <p>Software Engineering Intern @ Wingback Security</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- KEY STATS -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon-wrapper cyan-glow">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <div class="stat-info">
-              <h3 class="stat-number" data-target="700">0</h3>
-              <p class="stat-label">LeetCode Problems Solved</p>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon-wrapper emerald-glow">
-              <i class="fa-solid fa-laptop-code"></i>
-            </div>
-            <div class="stat-info">
-              <h3 class="stat-number" data-target="3">0</h3>
-              <p class="stat-label">Production Web Projects</p>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon-wrapper purple-glow">
-              <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-            <div class="stat-info">
-              <h3 class="stat-number-text">8.24</h3>
-              <p class="stat-label">CGPA at NIT Calicut</p>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon-wrapper amber-glow">
-              <i class="fa-solid fa-trophy"></i>
-            </div>
-            <div class="stat-info">
-              <h3 class="stat-number-text">2nd Place</h3>
-              <p class="stat-label">Yuva Manthan Hackathon</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION (MATCHING ABHAY RANA 2-COLUMN DISPLAY WITH PHOTO & 4 STATS) -->
     <section id="about" class="section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">ABOUT</span>
-          <h2 class="section-title">Background & Overview</h2>
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">About Me<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Get to know me better</p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-card main-bio">
-            <h3>Hello! I'm Ankur</h3>
-            <p>
-              I am a student at <strong>NIT Calicut</strong> with a strong passion for programming and software engineering. Over the past few years, I've taught myself full-stack backend development in Python, web API design, and machine learning.
-            </p>
-            <p>
-              Right now, I'm interning at <strong>Wingback Security</strong>, where I work on AI security tools that protect artificial intelligence applications from malicious inputs and data leaks.
-            </p>
-            <p>
-              When I'm not coding projects or interning, I spend time practicing algorithms on LeetCode to keep my data structures and problem-solving skills sharp.
-            </p>
-
-            <div class="bio-highlights">
-              <span class="bio-pill"><i class="fa-solid fa-check text-emerald"></i> Self-Taught Developer</span>
-              <span class="bio-pill"><i class="fa-solid fa-check text-cyan"></i> Python & FastAPI Expert</span>
-              <span class="bio-pill"><i class="fa-solid fa-check text-purple"></i> AI Security Intern</span>
-              <span class="bio-pill"><i class="fa-solid fa-check text-amber"></i> Quick Learner</span>
+        <div class="about-grid-abhay">
+          <!-- Left Column: Portrait Card -->
+          <div class="about-photo-card reveal reveal-left">
+            <div class="about-photo-frame">
+              <img src="assets/profile_photo.jpg" alt="Ankur Kumar Singh" class="about-photo-img" />
             </div>
           </div>
 
-          <div class="about-card what-i-do">
-            <h3>What I Do</h3>
-            
-            <div class="pillar-item">
-              <div class="pillar-icon">
-                <i class="fa-solid fa-server text-cyan"></i>
+          <!-- Right Column: Bio & 2x2 Stats Grid -->
+          <div class="about-details-card reveal reveal-right">
+            <p class="about-bio-text">
+              I'm a passionate software engineer with expertise in building scalable backend systems, REST APIs, and AI security tooling. Interning at <strong>Wingback Security</strong> and studying at <strong>NIT Calicut</strong>, I engineer high-performance systems with clean code and robust architecture. With a keen eye for detail and a love for elegant solutions, I transform complex algorithmic problems into reliable, intuitive, and secure services.
+            </p>
+
+            <div class="about-stats-grid-2x2">
+              <div class="about-stat-tile">
+                <span class="stat-red-dot"></span>
+                <div class="stat-tile-info">
+                  <h3 class="stat-tile-number"><span data-target="700">700</span>+</h3>
+                  <p class="stat-tile-label">LeetCode Solved</p>
+                </div>
               </div>
-              <div class="pillar-content">
-                <h4>Backend Web Development</h4>
-                <p>Building clean, fast REST APIs using Python, FastAPI, and databases like MongoDB and SQLite.</p>
+
+              <div class="about-stat-tile">
+                <span class="stat-red-dot"></span>
+                <div class="stat-tile-info">
+                  <h3 class="stat-tile-number"><span data-target="4">4</span>+</h3>
+                  <p class="stat-tile-label">Production Web Projects</p>
+                </div>
+              </div>
+
+              <div class="about-stat-tile">
+                <span class="stat-red-dot"></span>
+                <div class="stat-tile-info">
+                  <h3 class="stat-tile-number">8.24</h3>
+                  <p class="stat-tile-label">CGPA at NIT Calicut</p>
+                </div>
+              </div>
+
+              <div class="about-stat-tile">
+                <span class="stat-red-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                <div class="stat-tile-info">
+                  <h3 class="stat-tile-number stat-tile-company">Wingback Security</h3>
+                  <p class="stat-tile-label">SWE Intern (AI Security)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section-padding">
+      <div class="container">
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Projects<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Selected engineering works, production APIs, and automated security systems.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card reveal delay-1">
+            <div class="project-card-header">
+              <div class="project-icon-badge">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <div class="project-action-links">
+                <a href="https://github.com/Ankur377823/medication-reconciliation-service" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://medication-reconciliation-service.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
               </div>
             </div>
 
-            <div class="pillar-item">
-              <div class="pillar-icon">
-                <i class="fa-solid fa-shield-halved text-emerald"></i>
+            <div class="project-card-body">
+              <span class="project-tag-badge">Clinical Healthcare API</span>
+              <h3 class="project-title">Medication Reconciliation Service</h3>
+              <p class="project-desc">
+                High-reliability clinical web service that ingests multi-source patient medication records to automatically spot dosage conflicts, duplicate drug classes, and adverse interactions.
+              </p>
+
+              <ul class="project-feature-list">
+                <li><span>•</span> Versioned patient snapshot history in MongoDB</li>
+                <li><span>•</span> 69 automated unit and integration tests in Pytest</li>
+                <li><span>•</span> Deployed live on Render with OpenAPI documentation</li>
+              </ul>
+
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>MongoDB</span>
+                <span>Pytest</span>
               </div>
-              <div class="pillar-content">
-                <h4>AI Safety & Tools</h4>
-                <p>Developing security adapters that check AI prompts and responses for sensitive data and safety compliance.</p>
+
+              <div class="project-card-footer">
+                <button class="btn-outline-project btn-modal-trigger" data-modal="medication">
+                  <span>Architecture & Details</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card reveal delay-2">
+            <div class="project-card-header">
+              <div class="project-icon-badge">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="project-action-links">
+                <a href="https://github.com/Ankur377823/fastapi-Project" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://fastapi-project-lux4.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
               </div>
             </div>
 
-            <div class="pillar-item">
-              <div class="pillar-icon">
-                <i class="fa-solid fa-brain text-purple"></i>
+            <div class="project-card-body">
+              <span class="project-tag-badge">Machine Learning API</span>
+              <h3 class="project-title">Car Price Prediction API</h3>
+              <p class="project-desc">
+                Production machine learning web service built with Scikit-Learn that predicts used vehicle valuations in real-time, backed by low-latency Redis caching and containerization.
+              </p>
+
+              <ul class="project-feature-list">
+                <li><span>•</span> Scikit-Learn Random Forest regression pipeline</li>
+                <li><span>•</span> Redis caching layer delivering sub-15ms repeat predictions</li>
+                <li><span>•</span> Containerized with Docker and monitored with Prometheus</li>
+              </ul>
+
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>Scikit-Learn</span>
+                <span>Redis</span>
+                <span>Docker</span>
               </div>
-              <div class="pillar-content">
-                <h4>Machine Learning & Analytics</h4>
-                <p>Creating predictive ML models with PyTorch, Scikit-Learn, and hosting them on cloud servers with Docker.</p>
+
+              <div class="project-card-footer">
+                <button class="btn-outline-project btn-modal-trigger" data-modal="carprice">
+                  <span>Architecture & Details</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card reveal delay-3">
+            <div class="project-card-header">
+              <div class="project-icon-badge">
+                <i class="fa-solid fa-shield-virus"></i>
+              </div>
+              <div class="project-action-links">
+                <a href="https://github.com/Ankur377823/Botpress-Connector" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://botpress-connector-29gl.onrender.com/" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <span class="project-tag-badge">Security & Testing</span>
+              <h3 class="project-title">Botpress Chatbot Security Scanner</h3>
+              <p class="project-desc">
+                Automated security testing framework for Botpress chatbots. Stress-tests conversational AI bots against prompt injections, system prompt extraction, and sensitive data leakage.
+              </p>
+
+              <ul class="project-feature-list">
+                <li><span>•</span> Automated battery of adversarial prompt injection attacks</li>
+                <li><span>•</span> SQLite database logging audit trails & safety scores</li>
+                <li><span>•</span> 26 automated unit tests with mock server support</li>
+              </ul>
+
+              <div class="tech-pills">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>Botpress</span>
+                <span>SQLite</span>
+                <span>Pytest</span>
+              </div>
+
+              <div class="project-card-footer">
+                <button class="btn-outline-project btn-modal-trigger" data-modal="botpress">
+                  <span>Architecture & Details</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION (INTERACTIVE TABS WITH DEV-ICON BRAND LOGOS) -->
+    <section id="skills" class="section-padding">
+      <div class="container">
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Skills<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Core technical proficiencies and technologies I use to build scalable systems.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="skills-tabs-container reveal">
+          <button class="skill-tab-btn active" data-filter="all">All</button>
+          <button class="skill-tab-btn" data-filter="languages">Languages</button>
+          <button class="skill-tab-btn" data-filter="backend">Web & Backend</button>
+          <button class="skill-tab-btn" data-filter="ml">Machine Learning</button>
+          <button class="skill-tab-btn" data-filter="tools">Databases & Tools</button>
+        </div>
+
+        <!-- Skills Categories Container -->
+        <div class="skills-categories-container reveal" id="skills-categories-container">
+          <!-- Languages -->
+          <div class="skills-group" data-category="languages">
+            <h3 class="skills-group-title"><span class="dot-accent">•</span> Languages</h3>
+            <div class="skills-badge-row">
+              <div class="skill-badge">
+                <i class="devicon-python-plain colored"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-cplusplus-plain colored"></i>
+                <span>C++</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-go-plain colored"></i>
+                <span>Go</span>
+              </div>
+              <div class="skill-badge">
+                <i class="fa-solid fa-database" style="color: #38bdf8;"></i>
+                <span>SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks & Backend -->
+          <div class="skills-group" data-category="backend">
+            <h3 class="skills-group-title"><span class="dot-accent">•</span> Frameworks & Web Backend</h3>
+            <div class="skills-badge-row">
+              <div class="skill-badge">
+                <i class="devicon-fastapi-plain colored"></i>
+                <span>FastAPI</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-pytest-plain colored"></i>
+                <span>Pytest</span>
+              </div>
+              <div class="skill-badge">
+                <i class="fa-solid fa-network-wired" style="color: #38bdf8;"></i>
+                <span>REST APIs</span>
+              </div>
+              <div class="skill-badge">
+                <i class="fa-solid fa-shield-halved" style="color: #a78bfa;"></i>
+                <span>LiteLLM & AI Security</span>
+              </div>
+              <div class="skill-badge">
+                <i class="fa-solid fa-circle-check" style="color: #fb7185;"></i>
+                <span>Pydantic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Machine Learning & AI -->
+          <div class="skills-group" data-category="ml">
+            <h3 class="skills-group-title"><span class="dot-accent">•</span> Machine Learning & Analytics</h3>
+            <div class="skills-badge-row">
+              <div class="skill-badge">
+                <i class="devicon-pytorch-original colored"></i>
+                <span>PyTorch</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-tensorflow-original colored"></i>
+                <span>TensorFlow</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-scikitlearn-plain colored"></i>
+                <span>Scikit-Learn</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-numpy-plain colored"></i>
+                <span>NumPy</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-pandas-plain" style="color: #60a5fa;"></i>
+                <span>Pandas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skills-group" data-category="databases">
+            <h3 class="skills-group-title"><span class="dot-accent">•</span> Databases & Storage</h3>
+            <div class="skills-badge-row">
+              <div class="skill-badge">
+                <i class="devicon-mongodb-plain colored"></i>
+                <span>MongoDB</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-redis-plain colored"></i>
+                <span>Redis</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-sqlite-plain colored"></i>
+                <span>SQLite</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-postgresql-plain colored"></i>
+                <span>PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skills-group" data-category="tools">
+            <h3 class="skills-group-title"><span class="dot-accent">•</span> Tools & Platforms</h3>
+            <div class="skills-badge-row">
+              <div class="skill-badge">
+                <i class="devicon-docker-plain colored"></i>
+                <span>Docker</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-git-plain colored"></i>
+                <span>Git</span>
+              </div>
+              <div class="skill-badge">
+                <i class="devicon-github-original" style="color: #ffffff;"></i>
+                <span>GitHub</span>
+              </div>
+              <div class="skill-badge">
+                <img src="assets/linux.svg" alt="Linux" class="skill-img-logo" />
+                <span>Linux</span>
               </div>
             </div>
           </div>
@@ -243,19 +472,19 @@
     </section>
 
     <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="section-padding bg-subtle">
+    <section id="experience" class="section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">WORK EXPERIENCE</span>
-          <h2 class="section-title">Professional Experience</h2>
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Experience<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Professional work and leadership journey.</p>
         </div>
 
         <div class="experience-list">
           <!-- Experience Item 1 -->
-          <div class="exp-card">
+          <div class="exp-card reveal">
             <div class="exp-header">
               <div>
-                <span class="company-name text-cyan">Wingback Security</span>
+                <span class="company-name">Wingback Security</span>
                 <h3 class="role-title">Software Engineering Intern (AI Security)</h3>
               </div>
               <span class="exp-date">June 2026 – Present</span>
@@ -277,10 +506,10 @@
           </div>
 
           <!-- Experience Item 2 -->
-          <div class="exp-card">
+          <div class="exp-card reveal delay-1">
             <div class="exp-header">
               <div>
-                <span class="company-name text-purple">Google Developer Student Club (GDSC), NIT Calicut</span>
+                <span class="company-name">Google Developer Student Club (GDSC), NIT Calicut</span>
                 <h3 class="role-title">AI/ML Team Member</h3>
               </div>
               <span class="exp-date">Jan 2025 – Present</span>
@@ -300,163 +529,54 @@
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section-padding">
+    <!-- DEDICATED RESUME CTA SECTION (MATCHING ABHAY RANA SCREENSHOT 3) -->
+    <section class="resume-cta-section section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">PORTFOLIO</span>
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">Production backend APIs, machine learning tools, and automated security scanners.</p>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <div class="project-img-box">
-              <img src="assets/project_medication.jpg" alt="Medication Reconciliation Service" />
-            </div>
-            <div class="project-card-body">
-              <span class="project-tag-badge">Clinical Healthcare API</span>
-              <h3 class="project-title">Medication Reconciliation Service</h3>
-              <p class="project-desc">
-                A web service that ingests patient medication records to automatically spot dosage mistakes, duplicate drugs, and dangerous medication conflicts.
-              </p>
-              <div class="tech-pills">
-                <span>Python</span>
-                <span>FastAPI</span>
-                <span>MongoDB</span>
-                <span>Pytest (69 tests)</span>
-              </div>
-              <div class="project-links">
-                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="medication">
-                  <i class="fa-solid fa-circle-info"></i> Details
-                </button>
-                <a href="https://github.com/Ankur377823/medication-reconciliation-service" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
-                  <i class="fa-brands fa-github"></i> Code
-                </a>
-                <a href="https://medication-reconciliation-service.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="project-img-box">
-              <img src="assets/project_carprice.jpg" alt="Car Price Prediction API" />
-            </div>
-            <div class="project-card-body">
-              <span class="project-tag-badge">Machine Learning API</span>
-              <h3 class="project-title">Car Price Prediction API</h3>
-              <p class="project-desc">
-                A machine learning web service built with Scikit-Learn that predicts used car prices instantly. Features fast Redis caching and live monitoring.
-              </p>
-              <div class="tech-pills">
-                <span>Python</span>
-                <span>FastAPI</span>
-                <span>Scikit-Learn</span>
-                <span>Redis</span>
-                <span>Docker</span>
-              </div>
-              <div class="project-links">
-                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="carprice">
-                  <i class="fa-solid fa-circle-info"></i> Details
-                </button>
-                <a href="https://github.com/Ankur377823/fastapi-Project" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
-                  <i class="fa-brands fa-github"></i> Code
-                </a>
-                <a href="https://fastapi-project-lux4.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card">
-            <div class="project-img-box">
-              <img src="assets/project_botpress.jpg" alt="Botpress Connector & Red-Team Scanner" />
-            </div>
-            <div class="project-card-body">
-              <span class="project-tag-badge">Security & Testing</span>
-              <h3 class="project-title">Botpress Chatbot Security Scanner</h3>
-              <p class="project-desc">
-                An automated security testing tool for Botpress chatbots. It tests AI bots against prompt injections and data leaks, recording safety scores.
-              </p>
-              <div class="tech-pills">
-                <span>Python</span>
-                <span>FastAPI</span>
-                <span>Botpress</span>
-                <span>SQLite</span>
-                <span>Pytest (26 tests)</span>
-              </div>
-              <div class="project-links">
-                <button class="btn-sm btn-outline btn-modal-trigger" data-modal="botpress">
-                  <i class="fa-solid fa-circle-info"></i> Details
-                </button>
-                <a href="https://github.com/Ankur377823/Botpress-Connector" target="_blank" rel="noopener noreferrer" class="btn-sm btn-secondary">
-                  <i class="fa-brands fa-github"></i> Code
-                </a>
-                <a href="https://botpress-connector-29gl.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-sm btn-primary">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
+        <div class="resume-cta-box reveal">
+          <h2 class="resume-cta-title">Want to know more<span class="dot-accent">?</span></h2>
+          <p class="resume-cta-desc">Download my resume for a detailed look at my experience, skills, and education.</p>
+          <a href="assets/Ankur_Kumar_Singh_Resume_Latest.pdf?v=20260914" target="_blank" rel="noopener noreferrer" class="btn-resume-box">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>View Resume</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section-padding bg-subtle">
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">TECHNICAL SKILLS</span>
-          <h2 class="section-title">Skills & Core Competencies</h2>
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Milestones<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Recognition and competitive programming milestones from my technical journey.</p>
         </div>
 
-        <div class="skills-grid">
-          <div class="skill-group-card">
-            <h3><i class="fa-solid fa-code text-cyan"></i> Programming Languages</h3>
-            <div class="skill-chips">
-              <span class="chip">Python</span>
-              <span class="chip">C++</span>
-              <span class="chip">Go</span>
-              <span class="chip">SQL</span>
+        <div class="achievements-grid">
+          <div class="achievement-card reveal delay-1">
+            <div class="achievement-icon-box">
+              <i class="fa-solid fa-trophy"></i>
             </div>
+            <span class="achievement-category">National Hackathon</span>
+            <h3>Flipkart GRiD 8.0 Qualifier</h3>
+            <p>Advanced to Round 3 in Flipkart's flagship national engineering challenge competing across thousands of teams.</p>
           </div>
 
-          <div class="skill-group-card">
-            <h3><i class="fa-solid fa-server text-purple"></i> Web & Backend</h3>
-            <div class="skill-chips">
-              <span class="chip">FastAPI</span>
-              <span class="chip">REST APIs</span>
-              <span class="chip">LiteLLM</span>
-              <span class="chip">Pytest</span>
-              <span class="chip">Pydantic</span>
+          <div class="achievement-card reveal delay-2">
+            <div class="achievement-icon-box">
+              <i class="fa-solid fa-shield-halved"></i>
             </div>
+            <span class="achievement-category">Industry Experience</span>
+            <h3>Wingback Security SWE Intern</h3>
+            <p>Built enterprise-grade AI security scanners, automated runtime checks, and high-performance safety adapters.</p>
           </div>
 
-          <div class="skill-group-card">
-            <h3><i class="fa-solid fa-brain text-emerald"></i> Machine Learning</h3>
-            <div class="skill-chips">
-              <span class="chip">PyTorch</span>
-              <span class="chip">TensorFlow</span>
-              <span class="chip">Scikit-Learn</span>
-              <span class="chip">NumPy & Pandas</span>
+          <div class="achievement-card reveal delay-3">
+            <div class="achievement-icon-box">
+              <i class="fa-solid fa-laptop-code"></i>
             </div>
-          </div>
-
-          <div class="skill-group-card">
-            <h3><i class="fa-solid fa-database text-amber"></i> Databases & Tools</h3>
-            <div class="skill-chips">
-              <span class="chip">Docker</span>
-              <span class="chip">MongoDB</span>
-              <span class="chip">Redis</span>
-              <span class="chip">SQLite</span>
-              <span class="chip">Git & GitHub</span>
-            </div>
+            <span class="achievement-category">Algorithms & Problem Solving</span>
+            <h3>700+ LeetCode Problems Solved</h3>
+            <p>Consistent practice in advanced data structures, graph theory, dynamic programming, and systems algorithms.</p>
           </div>
         </div>
       </div>
@@ -465,50 +585,42 @@
     <!-- EDUCATION SECTION -->
     <section id="education" class="section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">EDUCATION & ACHIEVEMENTS</span>
-          <h2 class="section-title">Education & Milestones</h2>
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Education<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Academic background and coursework.</p>
         </div>
 
         <div class="edu-grid">
-          <div class="edu-card">
+          <div class="edu-card reveal delay-1">
             <span class="edu-year">2023 – 2027</span>
             <h3>National Institute of Technology Calicut (NIT Calicut)</h3>
             <p class="edu-degree">B.Tech Student | <strong>CGPA: 8.24 / 10</strong></p>
-            <p class="edu-desc">Self-taught software engineer building web applications, AI security tools, and practicing data structures.</p>
+            <p class="edu-desc">Coursework and active focus on Algorithms, Data Structures, Operating Systems, Computer Networks, and Software Engineering.</p>
           </div>
 
-          <div class="edu-card">
-            <span class="edu-year">National Level</span>
-            <h3>Flipkart GRiD 8.0 — Round 3 Qualifier</h3>
-            <p class="edu-degree">Software Development Track</p>
-            <p class="edu-desc">Qualified through multiple national algorithmic and coding elimination rounds competing against thousands of engineering students across India.</p>
-          </div>
-
-          <div class="edu-card">
-            <span class="edu-year">2024</span>
-            <h3>2nd Place Winner | Yuva Manthan Hackathon</h3>
-            <p class="edu-degree">Hackathon Milestone</p>
-            <p class="edu-desc">Won 2nd place for building software solutions under tight competition deadlines.</p>
+          <div class="edu-card reveal delay-2">
+            <span class="edu-year">2021 – 2023</span>
+            <h3>Senior Secondary Education</h3>
+            <p class="edu-degree">Mathematics, Physics & Chemistry</p>
+            <p class="edu-desc">Built foundational problem solving and mathematical modeling skills leading to top percentile rank in JEE competitive examination.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="section-padding bg-subtle">
+    <section id="contact" class="section-padding">
       <div class="container">
-        <div class="section-heading text-center">
-          <span class="section-tag">GET IN TOUCH</span>
-          <h2 class="section-title">Let's Connect</h2>
-          <p class="section-subtitle">Open for software engineering opportunities, backend projects, and technical collaborations.</p>
+        <div class="section-heading text-center reveal">
+          <h2 class="section-title">Contact<span class="dot-accent">.</span></h2>
+          <p class="section-subtitle">Let's talk about software engineering opportunities, backend projects, and collaborations.</p>
         </div>
 
         <div class="contact-layout">
           <!-- Left Column: Contact Cards & Socials -->
-          <div class="contact-info-column">
+          <div class="contact-info-column reveal reveal-left">
             <div class="info-card" data-copy="ankurrajput7050@gmail.com">
-              <i class="fa-regular fa-envelope text-cyan"></i>
+              <i class="fa-regular fa-envelope"></i>
               <div>
                 <span class="info-label">Email (Click to copy)</span>
                 <span class="info-value">ankurrajput7050@gmail.com</span>
@@ -516,7 +628,7 @@
             </div>
 
             <div class="info-card" data-copy="+918891079725">
-              <i class="fa-solid fa-phone text-emerald"></i>
+              <i class="fa-solid fa-phone"></i>
               <div>
                 <span class="info-label">Phone (Click to copy)</span>
                 <span class="info-value">+91-8891079725</span>
@@ -524,7 +636,7 @@
             </div>
 
             <div class="info-card">
-              <i class="fa-solid fa-location-dot text-purple"></i>
+              <i class="fa-solid fa-location-dot"></i>
               <div>
                 <span class="info-label">Location</span>
                 <span class="info-value">NIT Calicut, Kerala, India</span>
@@ -553,7 +665,7 @@
           </div>
 
           <!-- Right Column: Contact Form -->
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form-card">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form-card reveal reveal-right">
             <!-- Web3Forms Access Key -->
             <input type="hidden" name="access_key" id="web3forms-key" value="92a42b22-1eae-467a-9269-6dd538f8867b" />
             <input type="hidden" name="from_name" value="Portfolio Contact Form" />
@@ -561,11 +673,11 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="form-name">Your Name</label>
-                <input type="text" name="name" id="form-name" placeholder="Ashish Chanchlani" required />
+                <input type="text" name="name" id="form-name" placeholder="John Doe" required />
               </div>
               <div class="form-group">
                 <label for="form-email">Your Email</label>
-                <input type="email" name="email" id="form-email" placeholder="founder@nextbigthing.ai" required />
+                <input type="email" name="email" id="form-email" placeholder="john@example.com" required />
               </div>
             </div>
 
@@ -579,7 +691,7 @@
               <textarea name="message" id="form-message" rows="5" placeholder="Your message here..." required></textarea>
             </div>
 
-            <button type="submit" id="form-submit-btn" class="btn-primary btn-block">
+            <button type="submit" id="form-submit-btn" class="btn-primary-pill btn-block">
               <i class="fa-solid fa-paper-plane"></i>
               <span>Send Message</span>
             </button>
@@ -592,12 +704,17 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>&copy; 2026 Ankur Kumar Singh. All rights reserved.</p>
+      <p>&copy; 2026 Ankur Kumar Singh. Crafted with precision and passion.</p>
       <a href="#hero" class="back-to-top" title="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
       </a>
     </div>
   </footer>
+
+  <!-- FLOATING SCROLL TO TOP BUTTON -->
+  <button class="floating-top-btn" id="floating-top-btn" aria-label="Back to top" title="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <!-- PROJECT DETAIL MODAL -->
   <div id="project-modal" class="modal-overlay">
