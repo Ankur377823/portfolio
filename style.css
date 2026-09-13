@@ -356,6 +356,13 @@ a {
   transform: translateX(-4px) scale(1.08);
 }
 
+.floating-social-dock a svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  display: block;
+}
+
 /* ==========================================================================
    HERO SECTION (MATCHING ABHAY RANA CENTERED DISPLAY)
    ========================================================================== */
@@ -1116,6 +1123,13 @@ a {
   color: var(--accent-red);
   font-size: 1.4rem;
   margin-bottom: 18px;
+}
+
+.achievement-icon-box svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+  display: block;
 }
 
 .achievement-category {

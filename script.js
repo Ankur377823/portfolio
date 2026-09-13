@@ -232,7 +232,6 @@ const projectDetails = {
   medication: {
     title: "Medication Reconciliation Service",
     badge: "Clinical Healthcare REST API",
-    image: "assets/project_medication.jpg",
     tags: ["Python", "FastAPI", "MongoDB", "Pytest"],
     overview: "A clinical healthcare API designed to process patient medication lists from multiple sources. It automatically checks for dose mismatches, duplicate treatments, and drug interaction risks.",
     features: [
@@ -247,7 +246,6 @@ const projectDetails = {
   carprice: {
     title: "Car Price Prediction API",
     badge: "Machine Learning & Microservices",
-    image: "assets/project_carprice.jpg",
     tags: ["Python", "FastAPI", "Scikit-Learn", "Redis", "Docker"],
     overview: "An end-to-end machine learning web service that predicts resale car prices based on vehicle specs. Built with Scikit-Learn Random Forest Regression and containerized with Docker.",
     features: [
@@ -262,7 +260,6 @@ const projectDetails = {
   botpress: {
     title: "Botpress Chatbot Security Scanner",
     badge: "Security Testing Suite",
-    image: "assets/project_botpress.jpg",
     tags: ["Python", "FastAPI", "Botpress Cloud", "SQLite", "Pytest"],
     overview: "An automated security testing suite for Botpress Cloud chatbots. It tests conversational AI bots against prompt injections, jailbreaks, and sensitive data leakage.",
     features: [
