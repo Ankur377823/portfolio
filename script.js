@@ -229,16 +229,32 @@ function initClipboardCopy() {
 
 /* 8. Project Detail Modals */
 const projectDetails = {
+  botpress: {
+    title: "Botpress Chat API Connector — Red-Team Scanning Demo",
+    badge: "AI Security & Red-Teaming Suite",
+    tags: ["Python", "FastAPI", "Botpress Cloud", "SQLite", "Pytest"],
+    problem: "Production chatbots and LLM assistants deployed by enterprises are frequently vulnerable to prompt injection, system prompt leakage, jailbreaks, and sensitive data (PII) exfiltration. Engineering teams often lack automated tooling to continuously simulate attacker behavior and validate defensive guardrails before shipping bots to end users.",
+    solution: "Engineered an automated security red-teaming tool that integrates directly with the live Botpress Chat API. It automates test bot provisioning, performs bidirectional connection verification, and fires structured batteries of adversarial prompt attacks (jailbreaks, credential harvesting, role confusion) while recording response timings and defensive evaluations into a persistent SQLite database.",
+    features: [
+      "Engineered an asynchronous Python client library connecting to Botpress Cloud bots with live connection handshake validation",
+      "Automated test battery checking for prompt injection vulnerabilities, system prompt leaks, and PII exfiltration",
+      "Persists comprehensive audit logs, response timings, and vulnerability ratings in SQLite for compliance audit reviews",
+      "Includes 26 automated unit tests with mock Botpress server support covering onboarding, scan runs, and timeout handling"
+    ],
+    github: "https://github.com/Ankur377823/Botpress-Connector",
+    live: "https://botpress-connector-29gl.onrender.com/"
+  },
   medication: {
     title: "Medication Reconciliation Service",
     badge: "Clinical Healthcare REST API",
-    tags: ["Python", "FastAPI", "MongoDB", "Pytest"],
-    overview: "A clinical healthcare API designed to process patient medication lists from multiple sources. It automatically checks for dose mismatches, duplicate treatments, and drug interaction risks.",
+    tags: ["Python", "FastAPI", "MongoDB", "Pytest", "OpenAPI"],
+    problem: "During patient transitions of care across hospitals, specialty clinics, and home health, medication lists from fragmented EMRs and pharmacies frequently conflict. Unidentified duplicate drug classes, contraindications, and dosage discrepancies represent a leading root cause of preventable medical errors and patient harm.",
+    solution: "Built a high-reliability clinical healthcare backend using FastAPI that processes and standardizes multi-source patient medication records. It runs a deterministic reconciliation engine that parses clinical dosages and drug categories to automatically flag duplicate drug classes, dose inconsistencies, and adverse pharmacological interactions in real time.",
     features: [
-      "Versioned patient snapshot history in MongoDB for compliance",
-      "Automatic detection of dosage conflicts and duplicate drug classes",
-      "Includes 69 automated unit tests written with Pytest",
-      "Deployed and running live on Render"
+      "Implemented intelligent rule-based reconciliation algorithms flagging dangerous drug-drug interactions and duplicate therapies",
+      "Maintains immutable, versioned patient snapshot audit logs in MongoDB to ensure strict clinical compliance and traceability",
+      "Includes 69 automated unit and integration tests written in Pytest covering edge cases, invalid payloads, and dosage bounds",
+      "Containerized and deployed live on Render with interactive OpenAPI (Swagger) documentation"
     ],
     github: "https://github.com/Ankur377823/medication-reconciliation-service",
     live: "https://medication-reconciliation-service.onrender.com/docs"
@@ -246,30 +262,33 @@ const projectDetails = {
   carprice: {
     title: "Car Price Prediction API",
     badge: "Machine Learning & Microservices",
-    tags: ["Python", "FastAPI", "Scikit-Learn", "Redis", "Docker"],
-    overview: "An end-to-end machine learning web service that predicts resale car prices based on vehicle specs. Built with Scikit-Learn Random Forest Regression and containerized with Docker.",
+    tags: ["Python", "FastAPI", "Scikit-Learn", "Redis", "Docker", "Prometheus", "Grafana"],
+    problem: "Automotive e-commerce platforms require real-time market appraisals across complex combinations of vehicle attributes (mileage, brand prestige, age, fuel type, depreciation trends). Running compute-heavy ML regression models repeatedly for identical or high-frequency queries degrades server throughput and inflates response latency.",
+    solution: "Trained a Random Forest regression model on comprehensive used car market datasets and exposed it through a modular FastAPI microservice. Integrated an in-memory Redis caching tier with deterministic input hashing that intercepts repeated vehicle prediction queries, serving them in sub-15ms without invoking the model pipeline.",
     features: [
-      "Redis caching layer that speeds up repeat model predictions",
-      "Monitored with Prometheus metrics and Grafana performance boards",
-      "Containerized with Docker Compose for consistent deployment",
-      "Deployed live on Render with active API documentation"
+      "Trained Scikit-Learn Random Forest regression model delivering accurate resale price predictions based on vehicle specifications",
+      "Architected Redis caching layer that stores hashed query payloads, achieving sub-15ms response latency for repeated queries",
+      "Secured endpoints with JSON Web Tokens (JWT) authentication and granular API key validation mechanisms",
+      "Packaged full multi-container stack with Docker Compose and deployed on Render with real-time Prometheus metrics and Grafana monitoring"
     ],
     github: "https://github.com/Ankur377823/fastapi-Project",
     live: "https://fastapi-project-lux4.onrender.com/docs"
   },
-  botpress: {
-    title: "Botpress Chatbot Security Scanner",
-    badge: "Security Testing Suite",
-    tags: ["Python", "FastAPI", "Botpress Cloud", "SQLite", "Pytest"],
-    overview: "An automated security testing suite for Botpress Cloud chatbots. It tests conversational AI bots against prompt injections, jailbreaks, and sensitive data leakage.",
+  roadside: {
+    title: "Roadside Asset Detection & Spatial Hazard Analysis",
+    badge: "Computer Vision & Physical-World AI",
+    tags: ["Python", "YOLO", "OpenCV", "Roboflow", "Civil Engineering AI"],
+    problem: "Transportation departments and electric utilities manage vast roadway corridors, relying on manual, hazardous, and costly vehicle surveys to inspect utility poles, street signage, and roadside vegetation. Physical clearance violations—such as overgrown tree branches interfering with overhead power lines—often go undetected until severe storm outages or wildfires occur.",
+    solution: "Bridged civil engineering infrastructure knowledge with computer vision to create an automated roadside audit pipeline. Video feeds from vehicle-mounted cameras are sampled into frames, preprocessed to eliminate severe real-world noise (shadows, lens glare, motion blur), and analyzed with a custom-trained YOLO model to detect assets and calculate spatial clearances between vegetation and power poles.",
     features: [
-      "Asynchronous API client connecting to Botpress Cloud bots",
-      "Automated test battery checking for prompt injection vulnerabilities",
-      "Saves complete test logs and safety scores in a local SQLite database",
-      "Includes 26 automated unit tests with mock server support"
+      "Extracted high-definition video frames from raw vehicle recordings and annotated a custom multi-class dataset in Roboflow for utility poles, trees, and roadside assets",
+      "Engineered robust data preparation pipelines handling severe real-world noise: changing sun angles, road shadows, vibrations, and high-speed motion blur",
+      "Trained and fine-tuned a YOLO object detection model for high-precision real-time asset classification and inventory counting",
+      "Implemented spatial proximity algorithms to compute clearance distances between utility poles and encroaching vegetation, replacing manual field surveys",
+      "Direct application of NIT Calicut Civil Engineering background to physical-world computer vision with zero manual surveying required"
     ],
-    github: "https://github.com/Ankur377823/Botpress-Connector",
-    live: "https://botpress-connector-29gl.onrender.com/"
+    github: "https://github.com/Ankur377823/street-audit",
+    live: null
   }
 };
 
@@ -285,28 +304,40 @@ function initProjectModals() {
       if (!data) return;
 
       modalContent.innerHTML = `
-        <div class="modal-body">
-          <div style="background:#08090e; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px 20px; margin-bottom:1.2rem; font-family:'SF Mono',Monaco,monospace; font-size:0.85rem; color:#cbd5e1;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:8px;">
-              <span style="color:#64748b;">${data.title} // architecture</span>
-              <span style="color:#34d399; font-weight:700;">● Production Ready</span>
-            </div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              ${data.tags.map(t => `<span style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:9999px; font-size:0.75rem; color:#f8fafc;">${t}</span>`).join('')}
-            </div>
-          </div>
-          <span style="color:var(--accent-red); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">${data.badge}</span>
-          <h2 style="font-size:1.6rem; margin:0.4rem 0 0.8rem; color:#ffffff;">${data.title}</h2>
-          <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.2rem; line-height:1.7;">${data.overview}</p>
+        <div class="modal-body" style="padding-top: 6px;">
+          <span style="display:inline-block; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-red); margin-bottom:0.4rem;">${data.badge}</span>
+          <h2 style="font-size:1.65rem; font-weight:800; color:#ffffff; line-height:1.25; margin-bottom:0.75rem;">${data.title}</h2>
           
-          <h4 style="font-size:1rem; margin-bottom:0.6rem; color:#ffffff;">Key Technical Highlights:</h4>
-          <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem; margin-bottom:1.5rem; line-height:1.7;">
-            ${data.features.map(f => `<li style="margin-bottom:0.4rem;">${f}</li>`).join('')}
-          </ul>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+            ${data.tags.map(t => `<span style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); color:#fca5a5; font-size:0.76rem; font-weight:600; padding:4px 12px; border-radius:9999px;">${t}</span>`).join('')}
+          </div>
 
-          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <div style="margin-bottom:1.3rem;">
+            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.45rem;">
+              What Problem It Solves
+            </h3>
+            <p style="color:var(--text-secondary); font-size:0.93rem; line-height:1.75; margin:0;">${data.problem}</p>
+          </div>
+
+          <div style="margin-bottom:1.3rem;">
+            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.45rem;">
+              How It Works & Architecture
+            </h3>
+            <p style="color:var(--text-secondary); font-size:0.93rem; line-height:1.75; margin:0;">${data.solution}</p>
+          </div>
+
+          <div style="margin-bottom:1.6rem;">
+            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">
+              Key Technical Highlights
+            </h3>
+            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem; line-height:1.75; margin:0;">
+              ${data.features.map(f => `<li style="margin-bottom:0.45rem;">${f}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; padding-top:1.1rem; border-top:1px solid rgba(255,255,255,0.08);">
             <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-brands fa-github"></i> View GitHub Code</a>
-            <a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>
+            ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>` : ''}
           </div>
         </div>
       `;
