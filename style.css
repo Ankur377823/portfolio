@@ -103,6 +103,11 @@ body {
   z-index: 0;
 }
 
+/* Slide-in reveals start off-screen; clip them so they never cause sideways scrolling */
+main {
+  overflow-x: clip;
+}
+
 section[id] {
   scroll-margin-top: 90px;
 }
@@ -165,50 +170,56 @@ a {
 /* ==========================================================================
    SCROLL REVEAL ANIMATIONS (FRAMER MOTION STYLE)
    ========================================================================== */
-.reveal, .reveal-left, .reveal-right, .reveal-scale {
+.js .reveal, .js .reveal-left, .js .reveal-right, .js .reveal-scale {
   will-change: opacity, transform;
 }
 
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.active {
+.js .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-left {
+.js .reveal-left {
   opacity: 0;
   transform: translateX(-40px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-left.active {
+.js .reveal-left.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-.reveal-right {
+.js .reveal-right {
   opacity: 0;
   transform: translateX(40px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-right.active {
+.js .reveal-right.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
+.js .delay-1 { transition-delay: 0.1s; }
+.js .delay-2 { transition-delay: 0.2s; }
+.js .delay-3 { transition-delay: 0.3s; }
+.js .delay-4 { transition-delay: 0.4s; }
+
+/* Once revealed, hand transitions back to snappy, undelayed hover effects */
+.js .revealed {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition-delay: 0s;
+}
 
 /* ==========================================================================
-   FLOATING PILL NAVBAR (MATCHING ABHAY RANA)
+   FLOATING PILL NAVBAR
    ========================================================================== */
 .fixed-nav-wrapper {
   position: fixed;
@@ -318,7 +329,7 @@ a {
 }
 
 /* ==========================================================================
-   FLOATING RIGHT SOCIAL DOCK (MATCHING USER REQUIREMENT)
+   FLOATING RIGHT SOCIAL DOCK
    ========================================================================== */
 .floating-social-dock {
   position: fixed;
@@ -364,7 +375,7 @@ a {
 }
 
 /* ==========================================================================
-   HERO SECTION (MATCHING ABHAY RANA CENTERED DISPLAY)
+   HERO SECTION (CENTERED DISPLAY)
    ========================================================================== */
 .hero-section {
   padding-top: 10.5rem;
@@ -513,9 +524,9 @@ a {
 }
 
 /* ==========================================================================
-   ABOUT SECTION (MATCHING ABHAY RANA 2-COLUMN WITH PHOTO & 4 STATS)
+   ABOUT SECTION (2-COLUMN WITH PHOTO & 4 STATS)
    ========================================================================== */
-.about-grid-abhay {
+.about-grid {
   display: grid;
   grid-template-columns: 440px 1fr;
   gap: 40px;
@@ -659,7 +670,7 @@ a {
   position: relative;
 }
 
-.project-card.active:hover {
+.project-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
@@ -1037,7 +1048,7 @@ a {
 }
 
 /* ==========================================================================
-   DEDICATED RESUME CTA SECTION (MATCHING ABHAY RANA SCREENSHOT 3)
+   DEDICATED RESUME CTA SECTION
    ========================================================================== */
 .resume-cta-section {
   padding: 4rem 0;
@@ -1545,12 +1556,18 @@ a {
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1024px) {
-  .about-grid-abhay {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .about-photo-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
   .about-photo-frame {
-    max-height: 420px;
+    min-height: 0;
+    aspect-ratio: 5 / 6;
   }
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1585,11 +1602,61 @@ a {
   .form-row {
     grid-template-columns: 1fr;
   }
-  .desktop-only-btn {
-    display: none !important;
+  .project-title,
+  .project-desc,
+  .project-feature-list,
+  .tech-pills {
+    min-height: 0;
   }
+  .project-card,
+  .exp-card,
+  .edu-card,
+  .achievement-card,
+  .contact-form-card {
+    padding: 24px;
+  }
+  .skills-group {
+    padding: 22px;
+  }
+  .section-padding {
+    padding: 4.5rem 0;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .resume-cta-title {
+    font-size: 2rem;
+  }
+  .resume-cta-box {
+    padding: 40px 24px;
+  }
+  .modal-card {
+    padding: 28px 22px;
+  }
+  .floating-top-btn {
+    bottom: 20px;
+    right: 20px;
+  }
+  /* Keep the footer clear of the floating scroll-to-top button */
+  .site-footer {
+    padding-bottom: 5.5rem;
+  }
+  .toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 80px;
+  }
+}
+
+/* Collapse the pill navbar before its links run out of room */
+@media (max-width: 920px) {
   .mobile-toggle {
     display: block;
+  }
+  .navbar {
+    width: 100%;
+    max-width: 560px;
+    justify-content: space-between;
   }
   .nav-links {
     position: fixed;
@@ -1623,7 +1690,412 @@ a {
     padding-top: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
+  .nav-link.active {
+    border-color: var(--accent-red-border);
+  }
+  /* The mobile action buttons below already offer the resume */
+  .nav-links .nav-resume-link {
+    display: none;
+  }
+  .nav-links.active {
+    background: #0e1017;
+  }
+  .mobile-nav-actions a {
+    justify-content: center;
+  }
+}
+
+.btn-outline-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-red-subtle);
+  border: 1px solid var(--accent-red-border);
+  color: var(--accent-red);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: var(--transition-fast);
+}
+
+.btn-outline-red:hover {
+  background: var(--accent-red);
+  color: #ffffff;
+}
+
+/* The side dock would sit on top of content once the container reaches the viewport edge */
+@media (max-width: 1240px) {
   .floating-social-dock {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 8.5rem;
+  }
+  .hero-title {
+    font-size: 2.15rem;
+  }
+  .hero-greeting {
+    font-size: 1rem;
+  }
+  .hero-impact-text {
+    font-size: 1.1rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-cta-group > * {
+    justify-content: center;
+  }
+  .btn-email-pill span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .about-photo-frame {
+    min-height: 340px;
+  }
+  .stat-tile-company {
+    white-space: normal;
+  }
+  .exp-header {
+    flex-direction: column;
+  }
+  .footer-content {
+    gap: 16px;
+  }
+  .footer-content p {
+    font-size: 0.82rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & POLISH
+   ========================================================================== */
+::selection {
+  background: rgba(239, 68, 68, 0.35);
+  color: #ffffff;
+}
+
+html {
+  scrollbar-color: #2a2d3a var(--bg-canvas);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2d3a;
+  border-radius: 10px;
+  border: 2px solid var(--bg-canvas);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 3000;
+  background: var(--accent-red);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+/* Reading progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 1100;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+}
+
+/* Navbar tightens once the page scrolls */
+.navbar {
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 11, 16, 0.94);
+  border-color: rgba(239, 68, 68, 0.18);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+}
+
+/* Hero scroll cue */
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-cue {
+  margin-top: 4rem;
+  display: inline-flex;
+  padding: 6px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.scroll-cue:hover {
+  opacity: 1;
+}
+
+.scroll-cue-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.scroll-cue-wheel {
+  width: 3px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--accent-red);
+  animation: scrollWheel 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+/* Cursor-following glow on cards */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(239, 68, 68, 0.09), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Skill filter entrance */
+.skills-group[hidden] {
+  display: none;
+}
+
+.skills-group-enter {
+  animation: skillsEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes skillsEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-card-static {
+  cursor: default;
+}
+
+.info-card-static:hover {
+  transform: none;
+}
+
+/* Contact form status line */
+.form-status {
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.4em;
+  margin-top: -6px;
+}
+
+.form-status.success {
+  color: #4ade80;
+}
+
+.form-status.error {
+  color: #fca5a5;
+}
+
+.btn-primary-pill:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
+/* Toast variants */
+.toast-error {
+  border-color: rgba(252, 165, 165, 0.5);
+}
+
+.toast-error i {
+  color: #fca5a5;
+}
+
+.toast-leave {
+  animation: slideOutToast 0.3s ease forwards;
+}
+
+@keyframes slideOutToast {
+  to { opacity: 0; transform: translateY(12px); }
+}
+
+/* Project detail modal content */
+.modal-body {
+  padding-top: 6px;
+}
+
+.modal-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-red);
+  margin-bottom: 0.4rem;
+  padding-right: 2.5rem;
+}
+
+.modal-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  padding-right: 1.5rem;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tags span {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.modal-section {
+  margin-bottom: 1.3rem;
+}
+
+.modal-section h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.45rem;
+}
+
+.modal-section p {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.75;
+}
+
+.modal-section ul {
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.modal-section li {
+  margin-bottom: 0.45rem;
+}
+
+.modal-section li::marker {
+  color: var(--accent-red);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  top: 14px;
+  right: 14px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }

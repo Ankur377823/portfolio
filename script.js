@@ -2,101 +2,127 @@
    ANKUR KUMAR SINGH - PORTFOLIO INTERACTIVITY & ANIMATION ENGINE
    ========================================================================== */
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
-  initScrollSpy();
+  initScrollEffects();
   initScrollReveal();
   initStatsCounters();
   initSkillTabs();
-  initFloatingScrollTop();
   initClipboardCopy();
   initProjectModals();
   initContactForm();
+  initCardSpotlight();
+  initFooterYear();
 });
 
 /* 1. Mobile Navigation Toggle */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const mobileActionBtns = document.querySelectorAll('.mobile-nav-actions a');
+  if (!mobileToggle || !navMenu) return;
 
-  if (mobileToggle && navMenu) {
-    const icon = mobileToggle.querySelector('i');
+  const icon = mobileToggle.querySelector('i');
 
-    const toggleMenu = () => {
-      const isActive = navMenu.classList.toggle('active');
-      if (icon) {
-        if (isActive) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-xmark');
-        } else {
-          icon.classList.remove('fa-xmark');
-          icon.classList.add('fa-bars');
-        }
-      }
-    };
+  const setMenuOpen = (open) => {
+    navMenu.classList.toggle('active', open);
+    mobileToggle.setAttribute('aria-expanded', String(open));
+    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (icon) {
+      icon.classList.toggle('fa-bars', !open);
+      icon.classList.toggle('fa-xmark', open);
+    }
+  };
 
-    const closeMenu = () => {
-      navMenu.classList.remove('active');
-      if (icon) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-      }
-    };
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenuOpen(!navMenu.classList.contains('active'));
+  });
 
-    mobileToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+      setMenuOpen(false);
+    }
+  });
 
-    mobileActionBtns.forEach(btn => {
-      btn.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-        closeMenu();
-      }
-    });
-  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      setMenuOpen(false);
+      mobileToggle.focus();
+    }
+  });
 }
 
-/* 2. ScrollSpy Navigation Highlighting */
-function initScrollSpy() {
+/* 2. Scroll-Driven Effects: ScrollSpy, Progress Bar, Navbar State, Scroll-to-Top */
+function initScrollEffects() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  const progressBar = document.getElementById('scroll-progress');
+  const navbar = document.querySelector('.navbar');
+  const topBtn = document.getElementById('floating-top-btn');
+  let ticking = false;
 
-  window.addEventListener('scroll', () => {
+  const update = () => {
+    ticking = false;
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${maxScroll > 0 ? scrollY / maxScroll : 0})`;
+    }
+    if (navbar) navbar.classList.toggle('scrolled', scrollY > 40);
+    if (topBtn) topBtn.classList.toggle('visible', scrollY > 350);
+
+    // At the very bottom, the last section wins even if it is too short to reach the offset
     let current = '';
-    const scrollPos = window.scrollY + 200;
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        current = section.getAttribute('id');
-      }
-    });
+    if (maxScroll - scrollY < 4) {
+      current = sections[sections.length - 1]?.id || '';
+    } else {
+      const scrollPos = scrollY + 200;
+      sections.forEach(section => {
+        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+          current = section.id;
+        }
+      });
+    }
 
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+      const isActive = link.getAttribute('href') === `#${current}`;
+      link.classList.toggle('active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
       }
     });
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
   }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+
+  if (topBtn) {
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  }
 }
 
 /* 3. Framer-Style Scroll Reveal Animation Engine */
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
-  if (!('IntersectionObserver' in window)) {
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     revealElements.forEach(el => el.classList.add('active'));
     return;
   }
@@ -106,6 +132,8 @@ function initScrollReveal() {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
         observer.unobserve(entry.target);
+        // After the entrance animation, drop its long timing so hover effects feel instant
+        setTimeout(() => entry.target.classList.add('revealed'), 1300);
       }
     });
   }, {
@@ -125,37 +153,34 @@ function initScrollReveal() {
 /* 4. Number Counter Animation for Stats */
 function initStatsCounters() {
   const counters = document.querySelectorAll('[data-target]');
-  let animated = false;
+  const aboutSection = document.getElementById('about');
+  if (!counters.length || !aboutSection || prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+  const animate = (counter) => {
+    const target = parseInt(counter.getAttribute('data-target'), 10);
+    if (!target) return;
+    const duration = 1400;
+    const start = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    counter.textContent = '0';
+    requestAnimationFrame(step);
+  };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        counters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target'), 10);
-          if (!target) return;
-          const duration = 1200;
-          const stepTime = 25;
-          const steps = duration / stepTime;
-          const increment = target / steps;
-          let current = 0;
-
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              counter.textContent = target;
-              clearInterval(timer);
-            } else {
-              counter.textContent = Math.floor(current);
-            }
-          }, stepTime);
-        });
-      }
-    });
+    if (entries.some(entry => entry.isIntersecting)) {
+      observer.disconnect();
+      counters.forEach(animate);
+    }
   }, { threshold: 0.25 });
 
-  const aboutSection = document.getElementById('about');
-  if (aboutSection) observer.observe(aboutSection);
+  observer.observe(aboutSection);
 }
 
 /* 5. Interactive Skill Filter Tabs */
@@ -165,69 +190,80 @@ function initSkillTabs() {
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      tabBtns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
 
       const filter = btn.getAttribute('data-filter');
 
       skillGroups.forEach(group => {
-        const category = group.getAttribute('data-category');
-        if (filter === 'all' || category === filter || (filter === 'tools' && (category === 'tools' || category === 'databases'))) {
-          group.style.display = 'block';
-          group.style.opacity = '0';
-          group.style.transform = 'translateY(12px)';
-          requestAnimationFrame(() => {
-            group.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
-            group.style.opacity = '1';
-            group.style.transform = 'translateY(0)';
-          });
-        } else {
-          group.style.display = 'none';
+        const categories = group.getAttribute('data-category').split(' ');
+        const visible = filter === 'all' || categories.includes(filter);
+        group.hidden = !visible;
+        if (visible && !prefersReducedMotion) {
+          group.classList.remove('skills-group-enter');
+          void group.offsetWidth; // restart the animation
+          group.classList.add('skills-group-enter');
         }
       });
     });
   });
 }
 
-/* 6. Floating Scroll to Top Button */
-function initFloatingScrollTop() {
-  const topBtn = document.getElementById('floating-top-btn');
-  if (!topBtn) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 350) {
-      topBtn.classList.add('visible');
-    } else {
-      topBtn.classList.remove('visible');
+/* 6. Clipboard Copy Functionality */
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Clipboard API can be blocked (permissions, embedded frames); try the legacy path below
     }
-  }, { passive: true });
-
-  topBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
+  }
+  // Fallback for non-secure contexts, blocked permissions, and older browsers
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  const ok = document.execCommand('copy');
+  textarea.remove();
+  if (!ok) throw new Error('Copy command failed');
 }
 
-/* 7. Clipboard Copy Functionality */
 function initClipboardCopy() {
   document.querySelectorAll('[data-copy]').forEach(el => {
-    el.addEventListener('click', (e) => {
+    const handleCopy = async (e) => {
       e.stopPropagation();
       const copyVal = el.getAttribute('data-copy');
       if (!copyVal) return;
 
-      navigator.clipboard.writeText(copyVal).then(() => {
+      try {
+        await copyText(copyVal);
         showToast(`Copied to clipboard: ${copyVal}`);
-      }).catch(() => {
-        showToast(`Copied: ${copyVal}`);
+      } catch {
+        showToast(`Couldn't copy automatically. Here it is: ${copyVal}`, 'error');
+      }
+    };
+
+    el.addEventListener('click', handleCopy);
+
+    // Non-button elements (contact cards) need keyboard support too
+    if (el.tagName !== 'BUTTON') {
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCopy(e);
+        }
       });
-    });
+    }
   });
 }
 
-/* 8. Project Detail Modals */
+/* 7. Project Detail Modals */
 const projectDetails = {
   botpress: {
     title: "Botpress Chat API Connector — Red-Team Scanning Demo",
@@ -296,140 +332,203 @@ function initProjectModals() {
   const modalOverlay = document.getElementById('project-modal');
   const modalContent = document.getElementById('modal-dynamic-content');
   const closeBtn = document.getElementById('modal-close-btn');
+  if (!modalOverlay || !modalContent) return;
+
+  let lastTrigger = null;
+
+  const getFocusable = () => [...modalOverlay.querySelectorAll('a[href], button:not([disabled])')];
+
+  const openModal = (data, trigger) => {
+    lastTrigger = trigger;
+    modalContent.innerHTML = `
+      <div class="modal-body">
+        <span class="modal-badge">${data.badge}</span>
+        <h2 class="modal-title" id="modal-title">${data.title}</h2>
+
+        <div class="modal-tags">
+          ${data.tags.map(t => `<span>${t}</span>`).join('')}
+        </div>
+
+        <div class="modal-section">
+          <h3>What Problem It Solves</h3>
+          <p>${data.problem}</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>How It Works & Architecture</h3>
+          <p>${data.solution}</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>Key Technical Highlights</h3>
+          <ul>
+            ${data.features.map(f => `<li>${f}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="modal-actions">
+          <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill btn-sm"><i class="fa-brands fa-github" aria-hidden="true"></i> View GitHub Code</a>
+          ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill btn-sm"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Open Live Demo</a>` : ''}
+        </div>
+      </div>
+    `;
+
+    modalOverlay.classList.add('active');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    modalOverlay.querySelector('.modal-card').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    // The overlay is still visibility:hidden until the next frame, so focus after it becomes visible
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+  };
+
+  const closeModal = () => {
+    if (!modalOverlay.classList.contains('active')) return;
+    modalOverlay.classList.remove('active');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastTrigger) lastTrigger.focus();
+  };
 
   document.querySelectorAll('.btn-modal-trigger').forEach(btn => {
     btn.addEventListener('click', () => {
-      const key = btn.getAttribute('data-modal');
-      const data = projectDetails[key];
-      if (!data) return;
-
-      modalContent.innerHTML = `
-        <div class="modal-body" style="padding-top: 6px;">
-          <span style="display:inline-block; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--accent-red); margin-bottom:0.4rem;">${data.badge}</span>
-          <h2 style="font-size:1.65rem; font-weight:800; color:#ffffff; line-height:1.25; margin-bottom:0.75rem;">${data.title}</h2>
-          
-          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
-            ${data.tags.map(t => `<span style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); color:#fca5a5; font-size:0.76rem; font-weight:600; padding:4px 12px; border-radius:9999px;">${t}</span>`).join('')}
-          </div>
-
-          <div style="margin-bottom:1.3rem;">
-            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.45rem;">
-              What Problem It Solves
-            </h3>
-            <p style="color:var(--text-secondary); font-size:0.93rem; line-height:1.75; margin:0;">${data.problem}</p>
-          </div>
-
-          <div style="margin-bottom:1.3rem;">
-            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.45rem;">
-              How It Works & Architecture
-            </h3>
-            <p style="color:var(--text-secondary); font-size:0.93rem; line-height:1.75; margin:0;">${data.solution}</p>
-          </div>
-
-          <div style="margin-bottom:1.6rem;">
-            <h3 style="font-size:1.02rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">
-              Key Technical Highlights
-            </h3>
-            <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.92rem; line-height:1.75; margin:0;">
-              ${data.features.map(f => `<li style="margin-bottom:0.45rem;">${f}</li>`).join('')}
-            </ul>
-          </div>
-
-          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; padding-top:1.1rem; border-top:1px solid rgba(255,255,255,0.08);">
-            <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-brands fa-github"></i> View GitHub Code</a>
-            ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill" style="font-size:0.88rem; padding:8px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo</a>` : ''}
-          </div>
-        </div>
-      `;
-
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      const data = projectDetails[btn.getAttribute('data-modal')];
+      if (data) openModal(data, btn);
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
   modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) closeModal();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+    if (!modalOverlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+    } else if (e.key === 'Tab') {
+      // Keep keyboard focus inside the open dialog
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!modalOverlay.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
-
-  function closeModal() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
 }
 
-/* 9. Contact Form Submission (Web3Forms API Integration) */
+/* 8. Contact Form Submission (Web3Forms API Integration) */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('form-submit-btn');
+  const statusEl = document.getElementById('form-status');
+  if (!contactForm) return;
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('form-name').value.trim();
+  const defaultBtnHTML = submitBtn ? submitBtn.innerHTML : '';
 
-      if (submitBtn) {
-        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending Message...</span>`;
-        submitBtn.disabled = true;
-      }
+  const setStatus = (message, type) => {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = `form-status ${type || ''}`.trim();
+  };
 
-      const formData = new FormData(contactForm);
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
 
-      fetch('https://api.web3forms.com/submit', {
+    const name = document.getElementById('form-name').value.trim();
+
+    if (submitBtn) {
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> <span>Sending Message...</span>`;
+      submitBtn.disabled = true;
+    }
+    setStatus('', '');
+
+    try {
+      const response = await fetch(contactForm.action, {
         method: 'POST',
-        body: formData
-      })
-      .then(async (response) => {
-        const json = await response.json();
-        if (response.status === 200) {
-          showToast(`Thank you, ${name}! Your message has been delivered.`);
-          contactForm.reset();
-        } else {
-          showToast(json.message || 'Thank you! Your message has been sent.');
-          contactForm.reset();
-        }
-      })
-      .catch((error) => {
-        console.error('Web3Forms submit error:', error);
-        showToast(`Thank you, ${name}! Your message has been sent.`);
-        contactForm.reset();
-      })
-      .finally(() => {
-        if (submitBtn) {
-          submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>`;
-          submitBtn.disabled = false;
-        }
+        headers: { Accept: 'application/json' },
+        body: new FormData(contactForm)
       });
-    });
-  }
+      const json = await response.json().catch(() => ({}));
+
+      if (response.ok && json.success !== false) {
+        showToast(`Thank you, ${name}! Your message has been delivered.`);
+        setStatus("Message sent. I'll get back to you soon.", 'success');
+        contactForm.reset();
+      } else {
+        throw new Error(json.message || `Request failed with status ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Web3Forms submit error:', error);
+      const fallback = 'Your message could not be sent. Please email me directly at ankurrajput7050@gmail.com.';
+      showToast(fallback, 'error');
+      setStatus(fallback, 'error');
+    } finally {
+      if (submitBtn) {
+        submitBtn.innerHTML = defaultBtnHTML;
+        submitBtn.disabled = false;
+      }
+    }
+  });
 }
 
-/* 10. Toast Notification Helper */
-function showToast(message) {
+/* 9. Cursor Spotlight Glow on Cards */
+function initCardSpotlight() {
+  if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+
+  document.querySelectorAll('.project-card, .achievement-card, .edu-card, .exp-card').forEach(card => {
+    card.classList.add('spotlight');
+    card.addEventListener('pointermove', (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--spot-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--spot-y', `${e.clientY - rect.top}px`);
+    });
+  });
+}
+
+/* 10. Footer Year */
+function initFooterYear() {
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+/* 11. Toast Notification Helper */
+function showToast(message, type = 'success') {
   const container = document.getElementById('toast-container');
   if (!container) return;
 
   container.innerHTML = '';
 
   const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `
-    <i class="fa-solid fa-circle-check"></i>
-    <span>${message}</span>
-  `;
+  toast.className = `toast toast-${type}`;
+  toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
 
+  const icon = document.createElement('i');
+  icon.className = type === 'error' ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check';
+  icon.setAttribute('aria-hidden', 'true');
+
+  const text = document.createElement('span');
+  text.textContent = message;
+
+  toast.append(icon, text);
   container.appendChild(toast);
 
   setTimeout(() => {
-    toast.remove();
-  }, 3200);
+    toast.classList.add('toast-leave');
+    setTimeout(() => toast.remove(), 300);
+  }, type === 'error' ? 6000 : 3200);
 }
