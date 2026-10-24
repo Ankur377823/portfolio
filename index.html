@@ -6,6 +6,40 @@
   <title>Ankur Kumar Singh | Software Engineer</title>
   <meta name="description" content="Portfolio of Ankur Kumar Singh - Software Engineer, NIT Calicut, and SWE Intern at Wingback Security." />
   <meta name="author" content="Ankur Kumar Singh" />
+  <meta name="keywords" content="Ankur Kumar Singh, Software Engineer, AI Security, LLM Guardrails, FastAPI, Python, Machine Learning, NIT Calicut, Wingback" />
+  <meta name="theme-color" content="#090a0f" />
+
+  <!-- Social sharing previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ankur Kumar Singh | Software Engineer" />
+  <meta property="og:description" content="Software Engineer at NIT Calicut and SWE Intern at Wingback Security, building AI security systems, FastAPI services, and computer vision pipelines." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ankur Kumar Singh | Software Engineer" />
+  <meta name="twitter:description" content="AI security, backend APIs, and machine learning. 800+ LeetCode problems solved." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090a0f'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Inter,Arial,sans-serif' font-weight='800' font-size='38' fill='%23ffffff'%3EA%3C/text%3E%3Ccircle cx='50' cy='46' r='5' fill='%23ef4444'/%3E%3C/svg%3E" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ankur Kumar Singh",
+    "jobTitle": "Software Engineer",
+    "email": "mailto:ankurrajput7050@gmail.com",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "National Institute of Technology Calicut" },
+    "worksFor": { "@type": "Organization", "name": "Wingback Security" },
+    "sameAs": [
+      "https://github.com/Ankur377823",
+      "https://www.linkedin.com/in/ankur-singh0112/",
+      "https://leetcode.com/u/Ankur_rajput123/",
+      "https://www.kaggle.com/ankur2006"
+    ]
+  }
+  </script>
+
+  <!-- Lets CSS hide reveal-animated content only when JavaScript is available to show it -->
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Google Fonts: Inter for unmatched legibility & Playfair Display for editorial accent -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,25 +49,30 @@
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Devicon CDN for Official Brand Colored Logos -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <!-- Devicon CDN for Official Brand Colored Logos (pinned so icons can't change unexpectedly) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Reading progress indicator -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <!-- Ambient Red Atmospheric Glow -->
   <div class="ambient-glow" aria-hidden="true"></div>
 
   <!-- FLOATING PILL NAVBAR (CENTERED AT TOP) -->
   <header class="fixed-nav-wrapper">
-    <nav class="navbar">
-      <a href="#hero" class="nav-logo">
+    <nav class="navbar" aria-label="Primary">
+      <a href="#hero" class="nav-logo" aria-label="Ankur, back to top">
         <span class="logo-text">Ankur<span class="dot-accent">.</span></span>
       </a>
 
       <div class="nav-links" id="nav-menu">
-        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#hero" class="nav-link active" aria-current="true">Home</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#skills" class="nav-link">Skills</a>
@@ -44,19 +83,19 @@
 
         <div class="mobile-nav-actions">
           <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline-red btn-sm">
-            <i class="fa-regular fa-file-lines"></i>
+            <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
             <span>Resume</span>
           </a>
           <a href="#contact" class="btn-primary-pill btn-sm mobile-contact-btn">
             <span>Let's Talk</span>
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
 
       <div class="nav-actions">
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
-          <i class="fa-solid fa-bars"></i>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
       </div>
     </nav>
@@ -64,28 +103,28 @@
 
   <!-- FLOATING RIGHT SOCIAL DOCK (PERSISTENT AT RIGHT CORNER) -->
   <aside class="floating-social-dock" aria-label="Social links">
-    <a href="https://github.com/Ankur377823" target="_blank" rel="noopener noreferrer" title="GitHub Profile">
-      <i class="fa-brands fa-github"></i>
+    <a href="https://github.com/Ankur377823" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="GitHub profile">
+      <i class="fa-brands fa-github" aria-hidden="true"></i>
     </a>
-    <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" title="LeetCode Profile">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" role="img" aria-label="LeetCode">
+    <a href="https://leetcode.com/u/Ankur_rajput123/" target="_blank" rel="noopener noreferrer" title="LeetCode Profile" aria-label="LeetCode profile">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
         <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0z"/>
         <path d="M10.617 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
       </svg>
     </a>
-    <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile">
-      <i class="fa-brands fa-linkedin-in"></i>
+    <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" aria-label="LinkedIn profile">
+      <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
     </a>
-    <a href="https://www.kaggle.com/ankur2006" target="_blank" rel="noopener noreferrer" title="Kaggle Profile">
-      <i class="fa-brands fa-kaggle"></i>
+    <a href="https://www.kaggle.com/ankur2006" target="_blank" rel="noopener noreferrer" title="Kaggle Profile" aria-label="Kaggle profile">
+      <i class="fa-brands fa-kaggle" aria-hidden="true"></i>
     </a>
-    <a href="mailto:ankurrajput7050@gmail.com" title="Send Email">
-      <i class="fa-regular fa-envelope"></i>
+    <a href="mailto:ankurrajput7050@gmail.com" title="Send Email" aria-label="Send email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i>
     </a>
   </aside>
 
-  <main>
-    <!-- HERO SECTION (MATCHING ABHAY RANA CLEAN DISPLAY) -->
+  <main id="main-content">
+    <!-- HERO SECTION -->
     <section id="hero" class="hero-section">
       <div class="container hero-container text-center">
         <div class="hero-content reveal">
@@ -103,24 +142,28 @@
           <div class="hero-cta-group">
             <a href="#contact" class="btn-primary-pill">
               <span>Let's Connect</span>
-              <i class="fa-solid fa-arrow-right"></i>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </a>
 
-            <button class="btn-email-pill" id="quick-copy-email-btn" data-copy="ankurrajput7050@gmail.com">
+            <button type="button" class="btn-email-pill" id="quick-copy-email-btn" data-copy="ankurrajput7050@gmail.com" aria-label="Copy email address ankurrajput7050@gmail.com">
               <span>ankurrajput7050@gmail.com</span>
-              <i class="fa-regular fa-copy"></i>
+              <i class="fa-regular fa-copy" aria-hidden="true"></i>
             </button>
 
             <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-resume-pill">
-              <i class="fa-regular fa-file-lines"></i>
+              <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
               <span>View Resume</span>
             </a>
           </div>
         </div>
+
+        <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+          <span class="scroll-cue-mouse" aria-hidden="true"><span class="scroll-cue-wheel"></span></span>
+        </a>
       </div>
     </section>
 
-    <!-- ABOUT SECTION (MATCHING ABHAY RANA 2-COLUMN DISPLAY WITH PHOTO & 4 STATS) -->
+    <!-- ABOUT SECTION (2-COLUMN WITH PHOTO & 4 STATS) -->
     <section id="about" class="section-padding">
       <div class="container">
         <div class="section-heading text-center reveal">
@@ -128,7 +171,7 @@
           <p class="section-subtitle">Get to know me better</p>
         </div>
 
-        <div class="about-grid-abhay">
+        <div class="about-grid">
           <!-- Left Column: Portrait Card -->
           <div class="about-photo-card reveal reveal-left">
             <div class="about-photo-frame">
@@ -168,7 +211,7 @@
               </div>
 
               <div class="about-stat-tile">
-                <span class="stat-red-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                <span class="stat-red-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
                 <div class="stat-tile-info">
                   <h3 class="stat-tile-number stat-tile-company">Wingback Security</h3>
                   <p class="stat-tile-label">SWE Intern (AI Security)</p>
@@ -193,14 +236,14 @@
           <div class="project-card reveal delay-1">
             <div class="project-card-header">
               <div class="project-icon-badge">
-                <i class="fa-solid fa-shield-virus"></i>
+                <i class="fa-solid fa-shield-virus" aria-hidden="true"></i>
               </div>
               <div class="project-action-links">
-                <a href="https://github.com/Ankur377823/Botpress-Connector" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
-                  <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/Ankur377823/Botpress-Connector" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
-                <a href="https://botpress-connector-29gl.onrender.com/" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Live Demo">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <a href="https://botpress-connector-29gl.onrender.com/" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Live Demo" aria-label="Live Demo">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -213,9 +256,9 @@
               </p>
 
               <ul class="project-feature-list">
-                <li><span>•</span> Asynchronous API client for Botpress Chat API with connection validation</li>
-                <li><span>•</span> Adversarial battery testing prompt injection, jailbreaks, and PII exfiltration</li>
-                <li><span>•</span> 26 automated tests using pytest and a mock Botpress server for reliability</li>
+                <li><span aria-hidden="true">•</span> Asynchronous API client for Botpress Chat API with connection validation</li>
+                <li><span aria-hidden="true">•</span> Adversarial battery testing prompt injection, jailbreaks, and PII exfiltration</li>
+                <li><span aria-hidden="true">•</span> 26 automated tests using pytest and a mock Botpress server for reliability</li>
               </ul>
 
               <div class="tech-pills">
@@ -227,9 +270,9 @@
               </div>
 
               <div class="project-card-footer">
-                <button class="btn-outline-project btn-modal-trigger" data-modal="botpress">
+                <button type="button" class="btn-outline-project btn-modal-trigger" aria-haspopup="dialog" data-modal="botpress">
                   <span>Architecture & Details</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -239,14 +282,14 @@
           <div class="project-card reveal delay-2">
             <div class="project-card-header">
               <div class="project-icon-badge">
-                <i class="fa-solid fa-shield-heart"></i>
+                <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
               </div>
               <div class="project-action-links">
-                <a href="https://github.com/Ankur377823/medication-reconciliation-service" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
-                  <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/Ankur377823/medication-reconciliation-service" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
-                <a href="https://medication-reconciliation-service.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <a href="https://medication-reconciliation-service.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs" aria-label="Interactive Swagger Docs">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -259,9 +302,9 @@
               </p>
 
               <ul class="project-feature-list">
-                <li><span>•</span> Versioned patient snapshot history in MongoDB for compliance</li>
-                <li><span>•</span> 69 automated unit and integration tests in Pytest</li>
-                <li><span>•</span> Deployed live on Render with interactive OpenAPI documentation</li>
+                <li><span aria-hidden="true">•</span> Versioned patient snapshot history in MongoDB for compliance</li>
+                <li><span aria-hidden="true">•</span> 69 automated unit and integration tests in Pytest</li>
+                <li><span aria-hidden="true">•</span> Deployed live on Render with interactive OpenAPI documentation</li>
               </ul>
 
               <div class="tech-pills">
@@ -272,9 +315,9 @@
               </div>
 
               <div class="project-card-footer">
-                <button class="btn-outline-project btn-modal-trigger" data-modal="medication">
+                <button type="button" class="btn-outline-project btn-modal-trigger" aria-haspopup="dialog" data-modal="medication">
                   <span>Architecture & Details</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -284,14 +327,14 @@
           <div class="project-card reveal delay-3">
             <div class="project-card-header">
               <div class="project-icon-badge">
-                <i class="fa-solid fa-chart-line"></i>
+                <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
               </div>
               <div class="project-action-links">
-                <a href="https://github.com/Ankur377823/fastapi-Project" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
-                  <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/Ankur377823/fastapi-Project" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
-                <a href="https://fastapi-project-lux4.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <a href="https://fastapi-project-lux4.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="Interactive Swagger Docs" aria-label="Interactive Swagger Docs">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -304,9 +347,9 @@
               </p>
 
               <ul class="project-feature-list">
-                <li><span>•</span> Scikit-Learn Random Forest regression with JWT & API key security</li>
-                <li><span>•</span> Redis caching layer delivering sub-15ms repeat predictions</li>
-                <li><span>•</span> Docker Compose orchestration monitored with Prometheus & Grafana</li>
+                <li><span aria-hidden="true">•</span> Scikit-Learn Random Forest regression with JWT & API key security</li>
+                <li><span aria-hidden="true">•</span> Redis caching layer delivering sub-15ms repeat predictions</li>
+                <li><span aria-hidden="true">•</span> Docker Compose orchestration monitored with Prometheus & Grafana</li>
               </ul>
 
               <div class="tech-pills">
@@ -318,9 +361,9 @@
               </div>
 
               <div class="project-card-footer">
-                <button class="btn-outline-project btn-modal-trigger" data-modal="carprice">
+                <button type="button" class="btn-outline-project btn-modal-trigger" aria-haspopup="dialog" data-modal="carprice">
                   <span>Architecture & Details</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -330,11 +373,11 @@
           <div class="project-card reveal delay-4">
             <div class="project-card-header">
               <div class="project-icon-badge">
-                <i class="fa-solid fa-crosshairs"></i>
+                <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
               </div>
               <div class="project-action-links">
-                <a href="https://github.com/Ankur377823/street-audit" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository">
-                  <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/Ankur377823/street-audit" target="_blank" rel="noopener noreferrer" class="action-icon-link" title="GitHub Repository" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -347,10 +390,10 @@
               </p>
 
               <ul class="project-feature-list">
-                <li><span>•</span> Video frame extraction & custom annotation in Roboflow across utility poles, trees, and assets</li>
-                <li><span>•</span> Handled dynamic lighting, angles, occlusion, and motion blur across real-world road footage</li>
-                <li><span>•</span> Trained high-accuracy YOLO deep learning model for real-time asset classification and counting</li>
-                <li><span>•</span> Analyzed spatial proximity and clearance between assets to replace manual field surveys</li>
+                <li><span aria-hidden="true">•</span> Video frame extraction & custom annotation in Roboflow across utility poles, trees, and assets</li>
+                <li><span aria-hidden="true">•</span> Handled dynamic lighting, angles, occlusion, and motion blur across real-world road footage</li>
+                <li><span aria-hidden="true">•</span> Trained high-accuracy YOLO deep learning model for real-time asset classification and counting</li>
+                <li><span aria-hidden="true">•</span> Analyzed spatial proximity and clearance between assets to replace manual field surveys</li>
               </ul>
 
               <div class="tech-pills">
@@ -362,9 +405,9 @@
               </div>
 
               <div class="project-card-footer">
-                <button class="btn-outline-project btn-modal-trigger" data-modal="roadside">
+                <button type="button" class="btn-outline-project btn-modal-trigger" aria-haspopup="dialog" data-modal="roadside">
                   <span>Architecture & Details</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
@@ -382,34 +425,34 @@
         </div>
 
         <!-- Filter Tabs -->
-        <div class="skills-tabs-container reveal">
-          <button class="skill-tab-btn active" data-filter="all">All</button>
-          <button class="skill-tab-btn" data-filter="languages">Languages</button>
-          <button class="skill-tab-btn" data-filter="backend">Web & Backend</button>
-          <button class="skill-tab-btn" data-filter="ml">Machine Learning</button>
-          <button class="skill-tab-btn" data-filter="tools">Databases & Tools</button>
+        <div class="skills-tabs-container reveal" role="group" aria-label="Filter skills by category">
+          <button type="button" class="skill-tab-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="skill-tab-btn" data-filter="languages" aria-pressed="false">Languages</button>
+          <button type="button" class="skill-tab-btn" data-filter="backend" aria-pressed="false">Web & Backend</button>
+          <button type="button" class="skill-tab-btn" data-filter="ml" aria-pressed="false">Machine Learning</button>
+          <button type="button" class="skill-tab-btn" data-filter="tools" aria-pressed="false">Databases & Tools</button>
         </div>
 
         <!-- Skills Categories Container -->
         <div class="skills-categories-container reveal" id="skills-categories-container">
           <!-- Languages -->
           <div class="skills-group" data-category="languages">
-            <h3 class="skills-group-title"><span class="dot-accent">•</span> Languages</h3>
+            <h3 class="skills-group-title"><span class="dot-accent" aria-hidden="true">•</span> Languages</h3>
             <div class="skills-badge-row">
               <div class="skill-badge">
-                <i class="devicon-python-plain colored"></i>
+                <i class="devicon-python-plain colored" aria-hidden="true"></i>
                 <span>Python</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-cplusplus-plain colored"></i>
+                <i class="devicon-cplusplus-plain colored" aria-hidden="true"></i>
                 <span>C++</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-go-plain colored"></i>
+                <i class="devicon-go-plain colored" aria-hidden="true"></i>
                 <span>Go</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-database" style="color: #38bdf8;"></i>
+                <i class="fa-solid fa-database" style="color: #38bdf8;" aria-hidden="true"></i>
                 <span>SQL</span>
               </div>
             </div>
@@ -417,26 +460,26 @@
 
           <!-- Frameworks & Backend -->
           <div class="skills-group" data-category="backend">
-            <h3 class="skills-group-title"><span class="dot-accent">•</span> Backend & APIs</h3>
+            <h3 class="skills-group-title"><span class="dot-accent" aria-hidden="true">•</span> Backend & APIs</h3>
             <div class="skills-badge-row">
               <div class="skill-badge">
-                <i class="devicon-fastapi-plain colored"></i>
+                <i class="devicon-fastapi-plain colored" aria-hidden="true"></i>
                 <span>FastAPI</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-network-wired" style="color: #38bdf8;"></i>
+                <i class="fa-solid fa-network-wired" style="color: #38bdf8;" aria-hidden="true"></i>
                 <span>REST APIs</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-shield-halved" style="color: #ef4444;"></i>
+                <i class="fa-solid fa-shield-halved" style="color: #ef4444;" aria-hidden="true"></i>
                 <span>LiteLLM</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-pytest-plain colored"></i>
+                <i class="devicon-pytest-plain colored" aria-hidden="true"></i>
                 <span>Pytest</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-circle-check" style="color: #fb7185;"></i>
+                <i class="fa-solid fa-circle-check" style="color: #fb7185;" aria-hidden="true"></i>
                 <span>Pydantic</span>
               </div>
             </div>
@@ -444,69 +487,69 @@
 
           <!-- Machine Learning & AI -->
           <div class="skills-group" data-category="ml">
-            <h3 class="skills-group-title"><span class="dot-accent">•</span> Machine Learning & AI</h3>
+            <h3 class="skills-group-title"><span class="dot-accent" aria-hidden="true">•</span> Machine Learning & AI</h3>
             <div class="skills-badge-row">
               <div class="skill-badge">
-                <i class="fa-solid fa-crosshairs" style="color: #ef4444;"></i>
+                <i class="fa-solid fa-crosshairs" style="color: #ef4444;" aria-hidden="true"></i>
                 <span>YOLO</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-opencv-plain colored"></i>
+                <i class="devicon-opencv-plain colored" aria-hidden="true"></i>
                 <span>OpenCV</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-pytorch-original colored"></i>
+                <i class="devicon-pytorch-original colored" aria-hidden="true"></i>
                 <span>PyTorch</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-tensorflow-original colored"></i>
+                <i class="devicon-tensorflow-original colored" aria-hidden="true"></i>
                 <span>TensorFlow</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-scikitlearn-plain colored"></i>
+                <i class="devicon-scikitlearn-plain colored" aria-hidden="true"></i>
                 <span>Scikit-Learn</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-keras-plain colored"></i>
+                <i class="devicon-keras-plain colored" aria-hidden="true"></i>
                 <span>Keras</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-chart-simple" style="color: #f97316;"></i>
+                <i class="fa-solid fa-chart-simple" style="color: #f97316;" aria-hidden="true"></i>
                 <span>XGBoost</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-numpy-plain colored"></i>
+                <i class="devicon-numpy-plain colored" aria-hidden="true"></i>
                 <span>NumPy</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-pandas-plain" style="color: #60a5fa;"></i>
+                <i class="devicon-pandas-plain" style="color: #60a5fa;" aria-hidden="true"></i>
                 <span>Pandas</span>
               </div>
               <div class="skill-badge">
-                <i class="fa-solid fa-magnifying-glass-chart" style="color: #2dd4bf;"></i>
+                <i class="fa-solid fa-magnifying-glass-chart" style="color: #2dd4bf;" aria-hidden="true"></i>
                 <span>SHAP</span>
               </div>
             </div>
           </div>
 
           <!-- Databases -->
-          <div class="skills-group" data-category="databases">
-            <h3 class="skills-group-title"><span class="dot-accent">•</span> Databases</h3>
+          <div class="skills-group" data-category="databases tools">
+            <h3 class="skills-group-title"><span class="dot-accent" aria-hidden="true">•</span> Databases</h3>
             <div class="skills-badge-row">
               <div class="skill-badge">
-                <i class="devicon-mongodb-plain colored"></i>
+                <i class="devicon-mongodb-plain colored" aria-hidden="true"></i>
                 <span>MongoDB</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-redis-plain colored"></i>
+                <i class="devicon-redis-plain colored" aria-hidden="true"></i>
                 <span>Redis</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-postgresql-plain colored"></i>
+                <i class="devicon-postgresql-plain colored" aria-hidden="true"></i>
                 <span>PostgreSQL</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-sqlite-plain colored"></i>
+                <i class="devicon-sqlite-plain colored" aria-hidden="true"></i>
                 <span>SQLite</span>
               </div>
             </div>
@@ -514,14 +557,14 @@
 
           <!-- DevOps & Cloud Tools -->
           <div class="skills-group" data-category="tools">
-            <h3 class="skills-group-title"><span class="dot-accent">•</span> DevOps & Tools</h3>
+            <h3 class="skills-group-title"><span class="dot-accent" aria-hidden="true">•</span> DevOps & Tools</h3>
             <div class="skills-badge-row">
               <div class="skill-badge">
-                <i class="devicon-docker-plain colored"></i>
+                <i class="devicon-docker-plain colored" aria-hidden="true"></i>
                 <span>Docker</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-kubernetes-plain colored"></i>
+                <i class="devicon-kubernetes-plain colored" aria-hidden="true"></i>
                 <span>Kubernetes</span>
               </div>
               <div class="skill-badge">
@@ -538,11 +581,11 @@
                 <span>Grafana</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-git-plain colored"></i>
+                <i class="devicon-git-plain colored" aria-hidden="true"></i>
                 <span>Git</span>
               </div>
               <div class="skill-badge">
-                <i class="devicon-github-original" style="color: #ffffff;"></i>
+                <i class="devicon-github-original" style="color: #ffffff;" aria-hidden="true"></i>
                 <span>GitHub</span>
               </div>
               <div class="skill-badge">
@@ -617,14 +660,14 @@
       </div>
     </section>
 
-    <!-- DEDICATED RESUME CTA SECTION (MATCHING ABHAY RANA SCREENSHOT 3) -->
+    <!-- DEDICATED RESUME CTA SECTION -->
     <section class="resume-cta-section section-padding">
       <div class="container">
         <div class="resume-cta-box reveal">
           <h2 class="resume-cta-title">Want to know more<span class="dot-accent">?</span></h2>
           <p class="resume-cta-desc">Download my resume for a detailed look at my experience, skills, and education.</p>
           <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-resume-box">
-            <i class="fa-regular fa-file-lines"></i>
+            <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
             <span>View Resume</span>
           </a>
         </div>
@@ -642,7 +685,7 @@
         <div class="achievements-grid">
           <div class="achievement-card reveal delay-1">
             <div class="achievement-icon-box">
-              <i class="fa-solid fa-trophy"></i>
+              <i class="fa-solid fa-trophy" aria-hidden="true"></i>
             </div>
             <span class="achievement-category">National Hackathon</span>
             <h3>2nd Place – Yuva Manthan Hackathon (2024)</h3>
@@ -663,7 +706,7 @@
 
           <div class="achievement-card reveal delay-3">
             <div class="achievement-icon-box">
-              <i class="fa-solid fa-shield-halved"></i>
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
             </div>
             <span class="achievement-category">Industry Impact</span>
             <h3>Wingback Security SWE Intern</h3>
@@ -717,24 +760,24 @@
         <div class="contact-layout">
           <!-- Left Column: Contact Cards & Socials -->
           <div class="contact-info-column reveal reveal-left">
-            <div class="info-card" data-copy="ankurrajput7050@gmail.com">
-              <i class="fa-regular fa-envelope"></i>
+            <div class="info-card" data-copy="ankurrajput7050@gmail.com" role="button" tabindex="0" aria-label="Copy email address ankurrajput7050@gmail.com">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
               <div>
                 <span class="info-label">Email (Click to copy)</span>
                 <span class="info-value">ankurrajput7050@gmail.com</span>
               </div>
             </div>
 
-            <div class="info-card" data-copy="+918891079725">
-              <i class="fa-solid fa-phone"></i>
+            <div class="info-card" data-copy="+918891079725" role="button" tabindex="0" aria-label="Copy phone number +91 8891079725">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
               <div>
                 <span class="info-label">Phone (Click to copy)</span>
                 <span class="info-value">+91-8891079725</span>
               </div>
             </div>
 
-            <div class="info-card">
-              <i class="fa-solid fa-location-dot"></i>
+            <div class="info-card info-card-static">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
               <div>
                 <span class="info-label">Location</span>
                 <span class="info-value">NIT Calicut, Kerala, India</span>
@@ -746,17 +789,17 @@
               <div class="connect-social-list">
                 <a href="https://www.instagram.com/rajput__ankur__" target="_blank" rel="noopener noreferrer" class="connect-link-item highlight-ig">
                   <div class="connect-link-left">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     <span>Instagram</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square link-arrow"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square link-arrow" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/ankur-singh0112/" target="_blank" rel="noopener noreferrer" class="connect-link-item highlight-li">
                   <div class="connect-link-left">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                     <span>LinkedIn</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square link-arrow"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square link-arrow" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -767,32 +810,35 @@
             <!-- Web3Forms Access Key -->
             <input type="hidden" name="access_key" id="web3forms-key" value="92a42b22-1eae-467a-9269-6dd538f8867b" />
             <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+            <!-- Spam honeypot: real visitors never see or tick this -->
+            <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <div class="form-row">
               <div class="form-group">
                 <label for="form-name">Your Name</label>
-                <input type="text" name="name" id="form-name" placeholder="John Doe" required />
+                <input type="text" name="name" id="form-name" placeholder="John Doe" autocomplete="name" maxlength="100" required />
               </div>
               <div class="form-group">
                 <label for="form-email">Your Email</label>
-                <input type="email" name="email" id="form-email" placeholder="john@example.com" required />
+                <input type="email" name="email" id="form-email" placeholder="john@example.com" autocomplete="email" maxlength="150" required />
               </div>
             </div>
 
             <div class="form-group">
               <label for="form-subject">Subject</label>
-              <input type="text" name="subject" id="form-subject" placeholder="How can I help you?" required />
+              <input type="text" name="subject" id="form-subject" placeholder="How can I help you?" maxlength="150" required />
             </div>
 
             <div class="form-group">
               <label for="form-message">Message</label>
-              <textarea name="message" id="form-message" rows="5" placeholder="Your message here..." required></textarea>
+              <textarea name="message" id="form-message" rows="5" placeholder="Your message here..." minlength="10" maxlength="5000" required></textarea>
             </div>
 
             <button type="submit" id="form-submit-btn" class="btn-primary-pill btn-block">
-              <i class="fa-solid fa-paper-plane"></i>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
               <span>Send Message</span>
             </button>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -802,20 +848,20 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>&copy; 2026 Ankur Kumar Singh. Crafted with precision and passion.</p>
-      <a href="#hero" class="back-to-top" title="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
+      <p>&copy; <span id="footer-year">2026</span> Ankur Kumar Singh. Crafted with precision and passion.</p>
+      <a href="#hero" class="back-to-top" title="Back to top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
       </a>
     </div>
   </footer>
 
   <!-- FLOATING SCROLL TO TOP BUTTON -->
   <button class="floating-top-btn" id="floating-top-btn" aria-label="Back to top" title="Scroll to top">
-    <i class="fa-solid fa-arrow-up"></i>
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
 
   <!-- PROJECT DETAIL MODAL -->
-  <div id="project-modal" class="modal-overlay">
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-card">
       <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
       <div id="modal-dynamic-content">
@@ -825,9 +871,9 @@
   </div>
 
   <!-- TOAST NOTIFICATIONS -->
-  <div id="toast-container" class="toast-container"></div>
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
