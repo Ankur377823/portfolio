@@ -25,7 +25,8 @@
 
   /* Signature Accents */
   --accent-red: #ef4444;
-  --accent-red-hover: #dc2626;
+  --accent-red-hover: #b91c1c;
+  --accent-red-fill: #dc2626;
   --accent-red-subtle: rgba(239, 68, 68, 0.12);
   --accent-red-border: rgba(239, 68, 68, 0.3);
   --accent-red-glow: rgba(239, 68, 68, 0.35);
@@ -415,7 +416,7 @@ select {
 
 .hero-badge-pill {
   display: inline-block;
-  background: var(--accent-red);
+  background: var(--accent-red-fill);
   color: #ffffff;
   font-size: 0.92rem;
   font-weight: 600;
@@ -435,9 +436,7 @@ select {
 
 .impact-accent {
   font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(transparent 62%, rgba(239, 68, 68, 0.35) 62%);
-  padding: 0 2px;
+  color: var(--accent-red);
 }
 
 .hero-summary-text {
@@ -465,7 +464,7 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--accent-red);
+  background: var(--accent-red-fill);
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
@@ -870,8 +869,8 @@ select {
 }
 
 .skill-tab-btn.active {
-  background: var(--accent-red);
-  border-color: var(--accent-red);
+  background: var(--accent-red-fill);
+  border-color: var(--accent-red-fill);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
 }
@@ -1212,7 +1211,7 @@ select {
   display: inline-block;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent-red);
+  color: #f87171;
   background: var(--accent-red-subtle);
   border: 1px solid var(--accent-red-border);
   padding: 3px 12px;
@@ -1483,7 +1482,7 @@ select {
   padding-bottom: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 0.82rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 .footer-content {
@@ -2393,8 +2392,8 @@ html {
 }
 
 .btn-project-primary {
-  background: var(--accent-red);
-  border: 1px solid var(--accent-red);
+  background: var(--accent-red-fill);
+  border: 1px solid var(--accent-red-fill);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
 }
