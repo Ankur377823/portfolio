@@ -285,6 +285,27 @@ const projectDetails = {
     live: "https://20-219-138-38.sslip.io",
     privateRepo: true
   },
+  smartroad: {
+    title: "SmartRoad Audit: AI Road Safety Audit Platform",
+    badge: "Computer Vision & Full-Stack",
+    tags: ["React 19", "Vite", "Tailwind CSS", "FastAPI", "Pydantic v2", "SQLAlchemy 2", "PostgreSQL 16", "YOLO26n-seg", "ONNX Runtime Web", "WebGPU", "Google Maps APIs", "Docker", "Nginx", "Render"],
+    problem: "Road safety audits in India are mostly manual. Inspectors survey roads on foot or by car, note hazards on paper, and judge pothole severity by eye. The process is slow and inconsistent, and the findings are hard to track over time.",
+    solution: "SmartRoad Audit automates the first screening step so auditors can spend field time on the riskiest stretches. An engineer picks a road on Google Maps; the FastAPI backend splits it into segments, collects elevation, gradient, curvature, land use, and traffic for each, scores every segment from 0 to 100, and generates a safety checklist. A phone-camera pothole scanner runs a custom YOLO segmentation model entirely in the browser, estimates each pothole's depth and width, grades it against IRC codes of practice, geotags it, and exports a PDF report.",
+    features: [
+      "Rule-based risk score per segment from five weighted factors: gradient (25), curvature (20), operating speed (20), traffic (20), and pedestrian activity (15)",
+      "Auto-generated checklist per segment, with each item marked as answered automatically or needing field verification",
+      "Custom-trained YOLO26n-seg model running in a Web Worker with ONNX Runtime Web, using WebGPU when available and an INT8-quantized WASM model otherwise; no video leaves the device",
+      "False-positive filters that reject detections in the sky, tall vertical objects such as people and poles, and areas with colourful surroundings",
+      "Single-image depth estimate from cavity shadow and surface roughness, with width measured from camera height and tilt",
+      "IRC:82-2015 size classes and an IRC:SP:88-2019 likelihood × consequence matrix for risk level and repair priority, implemented identically in Python and JavaScript",
+      "GPS geotagging with road snapping, merging of repeat sightings, and PDF report export",
+      "Moving inference to the browser removed PyTorch from the server, cutting backend memory from ~500 MB to ~90 MB so the stack fits Render's free tier",
+      "Layered FastAPI backend (routes, services, repositories, models), Docker Compose for local development, and a Render Blueprint for one-click deployment"
+    ],
+    github: "https://github.com/Ankur377823/Smart-Road-Audit",
+    live: "https://smart-road-audit-1.onrender.com/",
+    liveNote: "Hosted on Render's free tier: the first visit can take 30–60 seconds while the server wakes up."
+  },
   botpress: {
     title: "Botpress Red-Team Scanner",
     badge: "AI Security & Red-Teaming",
@@ -331,21 +352,6 @@ const projectDetails = {
     github: "https://github.com/Ankur377823/fastapi-Project",
     live: "https://fastapi-project-lux4.onrender.com/docs",
     liveLabel: "Open API Docs"
-  },
-  roadside: {
-    title: "Roadside Asset Detection",
-    badge: "Computer Vision",
-    tags: ["Python", "YOLO", "OpenCV", "Roboflow", "Civil Infrastructure"],
-    problem: "Road authorities and utilities inspect utility poles, signs, and roadside vegetation through slow, costly, and sometimes hazardous manual surveys. Clearance problems, such as branches growing into power lines, often go unnoticed until they cause outages.",
-    solution: "A computer vision pipeline that brings civil engineering knowledge to road inspection. Footage from vehicle-mounted cameras is sampled into frames, cleaned up for real-world noise such as shadows, glare, and motion blur, and run through a custom-trained YOLO model that detects assets and measures the clearance between vegetation and poles.",
-    features: [
-      "Frames extracted from vehicle recordings and annotated in Roboflow as a multi-class dataset of poles, trees, and other roadside assets",
-      "Data preparation that handles changing sun angles, road shadows, camera vibration, and motion blur",
-      "YOLO object detection model trained and fine-tuned for asset classification and counting",
-      "Proximity analysis that measures the clearance between poles and nearby vegetation, replacing manual field surveys"
-    ],
-    github: "https://github.com/Ankur377823/street-audit",
-    live: null
   }
 };
 
@@ -392,6 +398,7 @@ function initProjectModals() {
           ${data.privateRepo ? `<span class="private-repo-pill"><i class="fa-solid fa-lock" aria-hidden="true"></i> Source code in a private repository</span>` : ''}
           ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill btn-sm"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ${data.liveLabel || 'Open Live Demo'}</a>` : ''}
         </div>
+        ${data.liveNote ? `<p class="modal-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> ${data.liveNote}</p>` : ''}
       </div>
     `;
 

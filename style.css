@@ -1185,8 +1185,13 @@ select {
    ========================================================================== */
 .edu-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+}
+
+/* University gets a full-width card; schools sit side by side below it */
+.edu-card:first-child {
+  grid-column: 1 / -1;
 }
 
 .edu-card {
@@ -1411,14 +1416,82 @@ select {
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border-card);
-  padding: 2.5rem 0;
-  margin-top: 4rem;
+  background: rgba(14, 16, 23, 0.6);
+  padding: 2.75rem 0 0;
+}
+
+.footer-brand {
+  max-width: 340px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+}
+
+.footer-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: var(--transition-fast);
+}
+
+.footer-social a:hover {
+  color: #ffffff;
+  border-color: var(--accent-red-border);
+  background: var(--accent-red-subtle);
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.82rem;
+  color: var(--text-dim);
 }
 
 .footer-content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 24px 40px;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
@@ -1658,8 +1731,12 @@ select {
     right: 20px;
   }
   /* Keep the footer clear of the floating scroll-to-top button */
-  .site-footer {
-    padding-bottom: 5.5rem;
+  .footer-bottom {
+    padding-bottom: 5rem;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
   }
   .toast-container {
     left: 16px;
@@ -1883,47 +1960,48 @@ html {
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
 }
 
-/* Hero scroll cue */
+/* Hero fills exactly one screen, content centered (no empty band below it) */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.scroll-cue {
-  margin-top: 4rem;
-  display: inline-flex;
-  padding: 6px;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.scroll-cue:hover {
-  opacity: 1;
-}
-
-.scroll-cue-mouse {
-  width: 24px;
-  height: 38px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  border-radius: 14px;
+.hero-credentials {
+  list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-top: 7px;
+  gap: 10px 28px;
+  margin-top: 2.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.scroll-cue-wheel {
-  width: 3px;
-  height: 8px;
-  border-radius: 3px;
-  background: var(--accent-red);
-  animation: scrollWheel 1.8s ease-in-out infinite;
+.hero-credentials li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
-@keyframes scrollWheel {
-  0% { opacity: 1; transform: translateY(0); }
-  70% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 0; transform: translateY(0); }
+.hero-credentials i {
+  color: var(--accent-red);
+  font-size: 0.88rem;
 }
 
 /* Cursor-following glow on cards */
@@ -2089,6 +2167,20 @@ html {
   flex-wrap: wrap;
   padding-top: 1.1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.modal-note i {
+  margin-top: 3px;
 }
 
 .modal-close {
