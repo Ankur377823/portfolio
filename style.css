@@ -34,7 +34,6 @@
   /* Typography */
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-italic-accent: 'Playfair Display', Georgia, serif;
 
   /* Radii */
   --radius-sm: 8px;
@@ -123,6 +122,14 @@ h1, h2, h3, h4 {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Form controls don't inherit the page font by default */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 
 .container {
@@ -426,11 +433,11 @@ a {
   line-height: 1.5;
 }
 
-.impact-italic {
-  font-family: var(--font-italic-accent);
-  font-style: italic;
+.impact-accent {
   font-weight: 600;
-  color: var(--accent-orange);
+  color: #ffffff;
+  background: linear-gradient(transparent 62%, rgba(239, 68, 68, 0.35) 62%);
+  padding: 0 2px;
 }
 
 .hero-summary-text {
@@ -743,9 +750,8 @@ a {
   font-size: 1.32rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.3;
-  min-height: 56px;
   display: flex;
   align-items: flex-start;
 }
@@ -1112,7 +1118,7 @@ a {
    ========================================================================== */
 .achievements-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -1330,7 +1336,21 @@ a {
   gap: 10px;
 }
 
-.highlight-ig:hover { color: #f43f5e; }
+.connect-link-item svg {
+  flex-shrink: 0;
+}
+
+.info-copy-hint {
+  margin-left: auto;
+  color: var(--text-dim) !important;
+  font-size: 0.95rem !important;
+  transition: color 0.2s ease;
+}
+
+.info-card:hover .info-copy-hint {
+  color: var(--accent-red) !important;
+}
+
 .highlight-li:hover { color: #38bdf8; }
 
 .contact-form-card {
@@ -2085,6 +2105,306 @@ html {
 
 .modal-close:hover {
   background: rgba(255, 255, 255, 0.06);
+}
+
+/* ==========================================================================
+   BRAND LOGOS (single-colour SVGs tinted with the brand colour)
+   ========================================================================== */
+.brand-icon {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  background-color: var(--brand, currentColor);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* Wordmark-style logos (e.g. SQLAlchemy's "SQLA") need width to stay legible */
+.brand-icon-wide {
+  width: 2.9rem;
+  -webkit-mask-size: 100% auto;
+  mask-size: 100% auto;
+}
+
+.achievement-icon-box .brand-icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* For skills that have no official logo (e.g. SQL) */
+.skill-generic-icon {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   FEATURED PROJECT CARD
+   ========================================================================== */
+.project-card-featured {
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(135deg, rgba(239, 68, 68, 0.07), transparent 45%),
+    var(--bg-card);
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+.project-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.featured-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fca5a5;
+  background: var(--accent-red-subtle);
+  border: 1px solid var(--accent-red-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.private-repo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+}
+
+.private-repo-pill i {
+  font-size: 0.75rem;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+}
+
+.project-card-featured .project-title,
+.project-card-featured .project-desc,
+.project-card-featured .tech-pills {
+  min-height: 0;
+}
+
+.project-card-featured .project-title {
+  font-size: 1.6rem;
+}
+
+.featured-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.featured-metrics div {
+  background: var(--bg-card-inner);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-metrics strong {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.featured-metrics span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.featured-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.featured-highlights li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--bg-card-inner);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.featured-highlights i {
+  color: var(--accent-red);
+  font-size: 1rem;
+  margin-top: 3px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.featured-highlights strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.featured-highlights span {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   PROJECT ACTIONS & STATUS
+   ========================================================================== */
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-project i {
+  font-size: 0.85rem;
+}
+
+.btn-project:hover {
+  transform: translateY(-1px);
+}
+
+.btn-project-primary {
+  background: var(--accent-red);
+  border: 1px solid var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+}
+
+.btn-project-primary:hover {
+  background: var(--accent-red-hover);
+  border-color: var(--accent-red-hover);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
+}
+
+.btn-project-secondary {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #0b0c13;
+}
+
+.btn-project-secondary:hover {
+  background: #e2e8f0;
+  border-color: #e2e8f0;
+}
+
+.btn-project-ghost {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+}
+
+.btn-project-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+
+.project-status-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.project-status-neutral {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-status-neutral i {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card-featured .project-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .project-actions {
+    width: 100%;
+  }
+  .btn-project {
+    flex: 1 1 auto;
+    padding: 0 14px;
+  }
+  .project-card-featured .project-title {
+    font-size: 1.35rem;
+  }
+  .featured-metrics {
+    gap: 8px;
+  }
+  .featured-metrics div {
+    padding: 10px;
+  }
+  .featured-metrics strong {
+    font-size: 1.05rem;
+  }
 }
 
 /* Respect users who ask for less motion */
