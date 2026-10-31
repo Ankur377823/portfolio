@@ -265,63 +265,84 @@ function initClipboardCopy() {
 
 /* 7. Project Detail Modals */
 const projectDetails = {
-  botpress: {
-    title: "Botpress Chat API Connector — Red-Team Scanning Demo",
-    badge: "AI Security & Red-Teaming Suite",
-    tags: ["Python", "FastAPI", "Botpress Cloud", "SQLite", "Pytest"],
-    problem: "Production chatbots and LLM assistants deployed by enterprises are frequently vulnerable to prompt injection, system prompt leakage, jailbreaks, and sensitive data (PII) exfiltration. Engineering teams often lack automated tooling to continuously simulate attacker behavior and validate defensive guardrails before shipping bots to end users.",
-    solution: "Engineered an automated security red-teaming tool that integrates directly with the live Botpress Chat API. It automates test bot provisioning, performs bidirectional connection verification, and fires structured batteries of adversarial prompt attacks (jailbreaks, credential harvesting, role confusion) while recording response timings and defensive evaluations into a persistent SQLite database.",
+  jobbot: {
+    title: "Job Bot: AI Job-Application Assistant",
+    badge: "Full-Stack Automation & Generative AI",
+    tags: ["Python", "FastAPI", "SQLAlchemy", "SQLite/PostgreSQL", "Gemini API", "Gmail API (OAuth)", "JavaScript (ES Modules)", "Chrome Extension (MV3)", "Playwright", "Docker", "Caddy", "Azure VM"],
+    problem: "A serious job search means hundreds of repetitive applications, the same screening questions answered again and again, and recruiter follow-ups that are easy to forget. Tracking which application is at which stage, and which resume actually gets replies, usually ends up scattered across spreadsheets and inboxes.",
+    solution: "Job Bot automates the search end to end. Every day it finds matching LinkedIn jobs and submits Easy Apply applications through its own Chrome extension, with a FastAPI server deciding each form step and Gemini answering screening questions. It then finds the recruiter's email or phone number, drafts a personal follow-up, and reads Gmail replies to move each job through the pipeline (Applied, Replied, Interview, Offer) without manual updates. It is multi-user, has an admin panel, and runs in Docker on an Azure VM behind Caddy for HTTPS.",
     features: [
-      "Engineered an asynchronous Python client library connecting to Botpress Cloud bots with live connection handshake validation",
-      "Automated test battery checking for prompt injection vulnerabilities, system prompt leaks, and PII exfiltration",
-      "Persists comprehensive audit logs, response timings, and vulnerability ratings in SQLite for compliance audit reviews",
-      "Includes 26 automated unit tests with mock Botpress server support covering onboarding, scan runs, and timeout handling"
+      "Manifest V3 Chrome extension fills and submits LinkedIn Easy Apply forms, with each form step decided server-side",
+      "Gemini answers screening questions, saved answers are reused across applications, and ambiguous questions are routed to the user",
+      "Selects the best of the user's resumes for each job and tracks which resume earns the most replies and interviews",
+      "Finds recruiter emails and phone numbers from job posts and LinkedIn posts, keeps the source of each contact, and drafts personal emails and WhatsApp messages naming the role and job ID",
+      "Reads only relevant Gmail messages to detect replies, interviews, offers, and rejections, and moves tracker cards automatically",
+      "Drag-and-drop pipeline tracker with an applications-per-day chart and reply and interview rates per resume",
+      "Multi-user accounts with per-user data, an admin dashboard showing live extension status, and a daily scheduler",
+      "Self-repairing database with daily backups, a thread-safe Gmail client, and 160+ automated unit, end-to-end, and extension tests"
+    ],
+    github: null,
+    live: "https://20-219-138-38.sslip.io",
+    privateRepo: true
+  },
+  botpress: {
+    title: "Botpress Red-Team Scanner",
+    badge: "AI Security & Red-Teaming",
+    tags: ["Python", "FastAPI", "Botpress Cloud", "SQLite", "Pytest"],
+    problem: "Chatbots and LLM assistants in production are often vulnerable to prompt injection, system-prompt leaks, jailbreaks, and leaks of personal data (PII). Most teams have no automated way to simulate these attacks and check their guardrails before a bot reaches users.",
+    solution: "An automated red-teaming tool that connects to a live bot through the Botpress Chat API. It sets up test conversations, verifies the connection in both directions, and runs structured batteries of attacks such as jailbreaks, credential harvesting, and role confusion. Every response, its timing, and the verdict are stored in SQLite for later review.",
+    features: [
+      "Asynchronous Python client for Botpress Cloud bots with connection handshake checks",
+      "Attack batteries covering prompt injection, system-prompt leaks, and PII exfiltration",
+      "Audit history of responses, timings, and vulnerability ratings stored in SQLite",
+      "26 automated tests against a mock Botpress server, covering onboarding, scan runs, and timeouts"
     ],
     github: "https://github.com/Ankur377823/Botpress-Connector",
     live: "https://botpress-connector-29gl.onrender.com/"
   },
   medication: {
     title: "Medication Reconciliation Service",
-    badge: "Clinical Healthcare REST API",
+    badge: "Healthcare Backend API",
     tags: ["Python", "FastAPI", "MongoDB", "Pytest", "OpenAPI"],
-    problem: "During patient transitions of care across hospitals, specialty clinics, and home health, medication lists from fragmented EMRs and pharmacies frequently conflict. Unidentified duplicate drug classes, contraindications, and dosage discrepancies represent a leading root cause of preventable medical errors and patient harm.",
-    solution: "Built a high-reliability clinical healthcare backend using FastAPI that processes and standardizes multi-source patient medication records. It runs a deterministic reconciliation engine that parses clinical dosages and drug categories to automatically flag duplicate drug classes, dose inconsistencies, and adverse pharmacological interactions in real time.",
+    problem: "When a patient moves between hospitals, clinics, and home care, their medication lists come from separate record systems and pharmacies and often disagree. Duplicate drug classes, contraindications, and dosage mismatches that go unnoticed are a common cause of preventable medication errors.",
+    solution: "A FastAPI backend that takes medication records from several sources and normalizes them into one list. A deterministic reconciliation engine reads dosages and drug categories to flag duplicate drug classes, inconsistent doses, and known drug-drug interactions.",
     features: [
-      "Implemented intelligent rule-based reconciliation algorithms flagging dangerous drug-drug interactions and duplicate therapies",
-      "Maintains immutable, versioned patient snapshot audit logs in MongoDB to ensure strict clinical compliance and traceability",
-      "Includes 69 automated unit and integration tests written in Pytest covering edge cases, invalid payloads, and dosage bounds",
-      "Containerized and deployed live on Render with interactive OpenAPI (Swagger) documentation"
+      "Rule-based reconciliation that flags drug-drug interactions and duplicate therapies",
+      "Immutable, versioned patient snapshots in MongoDB for a full audit trail",
+      "69 unit and integration tests in pytest covering edge cases, invalid payloads, and dosage limits",
+      "Containerized and deployed on Render with interactive OpenAPI (Swagger) documentation"
     ],
     github: "https://github.com/Ankur377823/medication-reconciliation-service",
-    live: "https://medication-reconciliation-service.onrender.com/docs"
+    live: "https://medication-reconciliation-service.onrender.com/docs",
+    liveLabel: "Open API Docs"
   },
   carprice: {
     title: "Car Price Prediction API",
-    badge: "Machine Learning & Microservices",
+    badge: "Machine Learning API",
     tags: ["Python", "FastAPI", "Scikit-Learn", "Redis", "Docker", "Prometheus", "Grafana"],
-    problem: "Automotive e-commerce platforms require real-time market appraisals across complex combinations of vehicle attributes (mileage, brand prestige, age, fuel type, depreciation trends). Running compute-heavy ML regression models repeatedly for identical or high-frequency queries degrades server throughput and inflates response latency.",
-    solution: "Trained a Random Forest regression model on comprehensive used car market datasets and exposed it through a modular FastAPI microservice. Integrated an in-memory Redis caching tier with deterministic input hashing that intercepts repeated vehicle prediction queries, serving them in sub-15ms without invoking the model pipeline.",
+    problem: "Used-car marketplaces need instant price estimates across many combinations of mileage, brand, age, and fuel type. Running the model again for every repeated query wastes compute and slows responses.",
+    solution: "A Random Forest regression model trained on used-car listings and served through a FastAPI service. A Redis cache keyed on a hash of the input returns repeated predictions in under 15 ms without calling the model.",
     features: [
-      "Trained Scikit-Learn Random Forest regression model delivering accurate resale price predictions based on vehicle specifications",
-      "Architected Redis caching layer that stores hashed query payloads, achieving sub-15ms response latency for repeated queries",
-      "Secured endpoints with JSON Web Tokens (JWT) authentication and granular API key validation mechanisms",
-      "Packaged full multi-container stack with Docker Compose and deployed on Render with real-time Prometheus metrics and Grafana monitoring"
+      "Scikit-Learn Random Forest model predicting resale price from vehicle specifications",
+      "Redis cache keyed on hashed inputs, returning repeat predictions in under 15 ms",
+      "Endpoints secured with JWT authentication and API-key validation",
+      "Multi-container Docker Compose stack deployed on Render, with Prometheus metrics and Grafana dashboards"
     ],
     github: "https://github.com/Ankur377823/fastapi-Project",
-    live: "https://fastapi-project-lux4.onrender.com/docs"
+    live: "https://fastapi-project-lux4.onrender.com/docs",
+    liveLabel: "Open API Docs"
   },
   roadside: {
-    title: "Roadside Asset Detection & Spatial Hazard Analysis",
-    badge: "Computer Vision & Physical-World AI",
-    tags: ["Python", "YOLO", "OpenCV", "Roboflow", "Civil Engineering AI"],
-    problem: "Transportation departments and electric utilities manage vast roadway corridors, relying on manual, hazardous, and costly vehicle surveys to inspect utility poles, street signage, and roadside vegetation. Physical clearance violations—such as overgrown tree branches interfering with overhead power lines—often go undetected until severe storm outages or wildfires occur.",
-    solution: "Bridged civil engineering infrastructure knowledge with computer vision to create an automated roadside audit pipeline. Video feeds from vehicle-mounted cameras are sampled into frames, preprocessed to eliminate severe real-world noise (shadows, lens glare, motion blur), and analyzed with a custom-trained YOLO model to detect assets and calculate spatial clearances between vegetation and power poles.",
+    title: "Roadside Asset Detection",
+    badge: "Computer Vision",
+    tags: ["Python", "YOLO", "OpenCV", "Roboflow", "Civil Infrastructure"],
+    problem: "Road authorities and utilities inspect utility poles, signs, and roadside vegetation through slow, costly, and sometimes hazardous manual surveys. Clearance problems, such as branches growing into power lines, often go unnoticed until they cause outages.",
+    solution: "A computer vision pipeline that brings civil engineering knowledge to road inspection. Footage from vehicle-mounted cameras is sampled into frames, cleaned up for real-world noise such as shadows, glare, and motion blur, and run through a custom-trained YOLO model that detects assets and measures the clearance between vegetation and poles.",
     features: [
-      "Extracted high-definition video frames from raw vehicle recordings and annotated a custom multi-class dataset in Roboflow for utility poles, trees, and roadside assets",
-      "Engineered robust data preparation pipelines handling severe real-world noise: changing sun angles, road shadows, vibrations, and high-speed motion blur",
-      "Trained and fine-tuned a YOLO object detection model for high-precision real-time asset classification and inventory counting",
-      "Implemented spatial proximity algorithms to compute clearance distances between utility poles and encroaching vegetation, replacing manual field surveys",
-      "Direct application of NIT Calicut Civil Engineering background to physical-world computer vision with zero manual surveying required"
+      "Frames extracted from vehicle recordings and annotated in Roboflow as a multi-class dataset of poles, trees, and other roadside assets",
+      "Data preparation that handles changing sun angles, road shadows, camera vibration, and motion blur",
+      "YOLO object detection model trained and fine-tuned for asset classification and counting",
+      "Proximity analysis that measures the clearance between poles and nearby vegetation, replacing manual field surveys"
     ],
     github: "https://github.com/Ankur377823/street-audit",
     live: null
@@ -367,8 +388,9 @@ function initProjectModals() {
         </div>
 
         <div class="modal-actions">
-          <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill btn-sm"><i class="fa-brands fa-github" aria-hidden="true"></i> View GitHub Code</a>
-          ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill btn-sm"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Open Live Demo</a>` : ''}
+          ${data.github ? `<a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-email-pill btn-sm"><i class="fa-brands fa-github" aria-hidden="true"></i> View GitHub Code</a>` : ''}
+          ${data.privateRepo ? `<span class="private-repo-pill"><i class="fa-solid fa-lock" aria-hidden="true"></i> Source code in a private repository</span>` : ''}
+          ${data.live ? `<a href="${data.live}" target="_blank" rel="noopener noreferrer" class="btn-primary-pill btn-sm"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> ${data.liveLabel || 'Open Live Demo'}</a>` : ''}
         </div>
       </div>
     `;
