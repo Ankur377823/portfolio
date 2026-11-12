@@ -331,11 +331,11 @@ const projectDetails = {
       "Rule-based reconciliation that flags drug-drug interactions and duplicate therapies",
       "Immutable, versioned patient snapshots in MongoDB for a full audit trail",
       "69 unit and integration tests in pytest covering edge cases, invalid payloads, and dosage limits",
-      "Containerized and deployed on Render with interactive OpenAPI (Swagger) documentation"
+      "Deployed on Render with a web app for reviewing and resolving medication discrepancies"
     ],
     github: "https://github.com/Ankur377823/medication-reconciliation-service",
-    live: "https://medication-reconciliation-service.onrender.com/docs",
-    liveLabel: "Open API Docs"
+    live: "https://medication-reconciliation-service-1-y257.onrender.com/",
+    liveNote: "Hosted on Render's free tier: the first visit can take 30–60 seconds while the server wakes up."
   },
   carprice: {
     title: "Car Price Prediction API",
