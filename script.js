@@ -270,20 +270,40 @@ const projectDetails = {
     badge: "Full-Stack Automation & Generative AI",
     tags: ["Python", "FastAPI", "SQLAlchemy", "SQLite/PostgreSQL", "Gemini API", "Gmail API (OAuth)", "JavaScript (ES Modules)", "Chrome Extension (MV3)", "Playwright", "Docker", "Caddy", "Azure VM"],
     problem: "A serious job search means hundreds of repetitive applications, the same screening questions answered again and again, and recruiter follow-ups that are easy to forget. Tracking which application is at which stage, and which resume actually gets replies, usually ends up scattered across spreadsheets and inboxes.",
-    solution: "Job Bot automates the search end to end. Every day it finds matching LinkedIn jobs and submits Easy Apply applications through its own Chrome extension, with a FastAPI server deciding each form step and Gemini answering screening questions. It then finds the recruiter's email or phone number, drafts a personal follow-up, and reads Gmail replies to move each job through the pipeline (Applied, Replied, Interview, Offer) without manual updates. It is multi-user, has an admin panel, and runs in Docker on an Azure VM behind Caddy for HTTPS.",
+    solution: "Job Bot is live with 20 users and has sent 1,000+ applications and 600+ recruiter emails. It automates the search end to end. Every day it finds matching LinkedIn jobs and submits Easy Apply applications through its own Chrome extension, with a FastAPI server deciding each form step and Gemini answering screening questions. It then finds the recruiter's email or phone number, drafts a personal follow-up, and reads Gmail replies to move each job through the pipeline (Applied, Replied, Interview, Offer) without manual updates. It is multi-user, has an admin panel, and runs in Docker on an Azure VM behind Caddy for HTTPS.",
     features: [
       "Manifest V3 Chrome extension fills and submits LinkedIn Easy Apply forms, with each form step decided server-side",
-      "Gemini answers screening questions, saved answers are reused across applications, and ambiguous questions are routed to the user",
+      "An AI agent reads each form page and answers from the user's profile and saved answers, asking the user only about new questions and reusing answers when a question is worded differently",
       "Selects the best of the user's resumes for each job and tracks which resume earns the most replies and interviews",
       "Finds recruiter emails and phone numbers from job posts and LinkedIn posts, keeps the source of each contact, and drafts personal emails and WhatsApp messages naming the role and job ID",
       "Reads only relevant Gmail messages to detect replies, interviews, offers, and rejections, and moves tracker cards automatically",
       "Drag-and-drop pipeline tracker with an applications-per-day chart and reply and interview rates per resume",
       "Multi-user accounts with per-user data, an admin dashboard showing live extension status, and a daily scheduler",
-      "Self-repairing database with daily backups, a thread-safe Gmail client, and 160+ automated unit, end-to-end, and extension tests"
+      "Added features users asked for, such as salary privacy, recruiter names in emails, and a skip option, built to work for every user",
+      "Traced a login outage to a network connection shared between threads and fixed it, then added automatic database repair, daily backups, and 150+ automated tests"
     ],
     github: null,
     live: "https://20-219-138-38.sslip.io",
     privateRepo: true
+  },
+  rag: {
+    title: "Hybrid RAG Search: Cited Document Q&A",
+    badge: "Retrieval-Augmented Generation",
+    tags: ["Python", "FastAPI", "OpenAI API", "BM25", "Reciprocal Rank Fusion", "PostgreSQL", "JWT Auth", "Docker", "Render", "Pytest", "mypy"],
+    problem: "Teams want to ask questions of their own documents, but semantic search alone misses exact terms and identifiers, and language models will confidently answer even when the documents don't support the answer.",
+    solution: "A multi-user document Q&A platform built with FastAPI, PostgreSQL, and OpenAI. Each question runs two searches, dense embeddings (text-embedding-3-small) and BM25 keywords, and the two ranked lists are fused with Reciprocal Rank Fusion (k = 60). An LLM re-ranker narrows the candidates to the top 5, GPT-4o writes an answer that cites each claim as [N], and a second model checks every citation against its source. Retrieval and citation scores combine into one confidence score; below the threshold the system answers “I don't know” instead of guessing.",
+    features: [
+      "Hybrid retrieval: dense and BM25 top-20 lists fused with Reciprocal Rank Fusion, avoiding fragile score normalization, then LLM re-ranking to the top 5",
+      "Grounded answers where every claim cites an evidence chunk, checked by an LLM-as-judge and combined into a composite confidence score",
+      "Hard “I don't know” gate that refuses low-confidence questions before spending generation tokens",
+      "Per-user isolation: each document, chunk, and query belongs to a user, and search is filtered to the caller's chunks before the top-K is taken",
+      "Ingests PDF, HTML, Markdown, and text with three chunking strategies; SHA-256 hashing makes identical re-uploads cost zero embedding calls",
+      "Versioned re-indexing that swaps in a document's new chunks only after the new version is fully embedded",
+      "JWT login, 60-requests-per-minute rate limiting, query history with latency and confidence, and per-user token usage tracking",
+      "71 automated tests at 83% coverage, ruff and strict mypy, CI on Python 3.11 and 3.12, and a Render blueprint for Docker and managed PostgreSQL"
+    ],
+    github: "https://github.com/Ankur377823/hybrid-rag-search",
+    live: null
   },
   smartroad: {
     title: "SmartRoad Audit: AI Road Safety Audit Platform",
