@@ -300,7 +300,7 @@ export default function Projects() {
 
       <div className="smaller">
         <Reveal as="h3" className="hand smaller__title">
-          smaller builds, same care →
+          {copy.smallerTitle}
         </Reveal>
         <div className="cards">
           {smaller.map((p, i) => (

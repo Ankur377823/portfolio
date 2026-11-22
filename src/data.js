@@ -309,20 +309,20 @@ export const education = [
 ];
 
 /* ------------------------------------------------------------------
-   TEMPORARY: engineering underwriting / risk version of the site.
+   TEMPORARY: risk-focused version of the site.
    While show is true, the hero, stickies, about, projects order, Wingback
    points, skills, milestones, contact note and resume all lean toward
-   engineering underwriting. Set show to false to bring back the normal site.
+   risk and analysis work. Set show to false to bring back the normal site.
    ------------------------------------------------------------------ */
 export const riskLens = {
   show: true,
   resume: '/assets/resume-engineering-risk.pdf',
   hero: {
-    note: 'civil engineer who works with data — infrastructure risk, pricing, analytics ↓',
+    note: 'civil engineering · risk analysis · automation ↓',
     lede: [
-      'Final-year Civil Engineering student at NIT Calicut, combining an understanding of how infrastructure is built with data analysis to',
-      'assess engineering risk',
-      '. I am building towards a long-term career in underwriting and risk management.',
+      'Final-year Civil Engineering student at NIT Calicut. I combine engineering knowledge with data analysis and automation to',
+      'assess risk',
+      ' and support better decisions, and I am building towards a long-term career in risk management.',
     ],
   },
   stickies: [
@@ -334,26 +334,219 @@ export const riskLens = {
   about: [
     "I'm a final-year Civil Engineering student at NIT Calicut with a strong interest in construction and infrastructure risk. I know the basics of structural analysis and how large projects are built.",
     'This summer I interned as a software engineer at Wingback Security, building tools that check data, flag problems and send risky cases for manual review.',
-    'I work in Excel, SQL and Python, explain technical findings clearly to non-technical people, and want to build a long-term career in engineering underwriting and risk management.',
+    'I work in Excel, SQL and Python, use automation to make routine checks faster and more consistent, and explain findings clearly to non-technical people. I want to build a long-term career in risk management.',
   ],
   aboutCard: {
-    currently: 'engineering underwriting and risk',
+    currently: 'risk, analytics and engineering',
     tools: 'Excel, SQL, Python, STAAD.Pro, AutoCAD',
   },
   title: 'Engineering risk',
   intro:
-    'Civil engineering taught me how infrastructure is built. Working with data taught me to measure what can go wrong, how likely it is and what it would cost. This is where the two meet.',
+    'Civil engineering taught me how infrastructure is built. Data and automation let me measure what can go wrong, how likely it is and what it would cost, and turn that into a clear decision.',
   note: 'engineering judgement, backed by data',
   items: [
-    { label: 'infrastructure risk', title: 'Risk scores for road segments', text: 'SmartRoad scores every road segment from 0 to 100 on five weighted factors: gradient, curvature, speed, traffic and pedestrian activity.' },
-    { label: 'likelihood × consequence', title: 'Priority from a risk matrix', text: 'Grades each pothole with the IRC:SP:88-2019 likelihood × consequence matrix to set its risk level and repair priority.' },
-    { label: 'asset monitoring', title: 'Roadside hazards from video', text: 'Trained a YOLO model on hand-labelled roadside video to count poles and trees, then measured their spacing to flag hazards and replace manual surveys.' },
-    { label: 'pricing', title: 'Insurance premium prediction', text: 'A classifier that places customers in Low, Medium or High premium bands, using engineered risk drivers such as BMI, age group, lifestyle risk and city tier.' },
-    { label: 'loss analysis', title: 'Churn analysis on 7,043 records', text: 'Found churn cost about 30% of monthly revenue, confirmed contract type as the main driver with a chi-square test, and chose an explainable model (AUC 0.85) using SHAP.' },
-    { label: 'business decisions', title: 'A/B test with break-even maths', text: 'Designed a retention A/B test with sample-size and break-even calculations so the result could support a business decision.' },
+    { label: 'infrastructure risk', title: 'Scoring roads for risk', text: 'Weighted 0–100 risk scores for road segments, and pothole grading on the IRC likelihood × consequence matrix.' },
+    { label: 'hazard identification', title: 'Finding hazards in images', text: 'Computer vision that flags trees too close to utility poles or hanging over the road, replacing manual surveys.' },
+    { label: 'risk pricing', title: 'Pricing from risk factors', text: 'Premium bands from BMI, age, lifestyle and city tier; loan default risk from credit features, with reasons for each decision.' },
+    { label: 'equipment risk', title: 'Predicting machine failure', text: 'Predicts the type of machine failure from temperature, speed, torque and tool wear, so maintenance can come first.' },
+    { label: 'loss analysis', title: 'From loss drivers to a decision', text: 'Measured churn at 30.5% of revenue, confirmed its drivers with statistical tests, and costed a retention test to break-even.' },
+    { label: 'automation', title: 'Automating routine decisions', text: 'Rules that allow, block or refer requests for manual review at Wingback, and a checklist tool that stops avoidable escalations.' },
   ],
-  projectsIntro: 'Engineering and data work: infrastructure risk, computer vision, pricing models and production APIs.',
-  projectsFirst: ['smartroad'],
+  // Projects shown in risk mode: featured first, then smaller cards. Software-only projects are left out.
+  projectIds: ['smartroad', 'telco', 'insurance', 'loan', 'machinefailure', 'streetaudit', 'rideops', 'carprice', 'rain'],
+  featuredIds: ['smartroad', 'telco', 'insurance'],
+  smallerTitle: 'more risk and analysis work →',
+  extraProjects: [
+    {
+      id: 'telco',
+      title: 'Telco Churn Analysis',
+      subtitle: 'loss drivers to a costed decision',
+      kind: 'statistics + data analysis',
+      summary:
+        'End-to-end analysis of 7,043 customers: what the losses cost, what drives them, and whether a retention offer would pay for itself.',
+      stats: [
+        { n: '30.5%', l: 'of monthly revenue lost' },
+        { n: '18', l: 'models compared' },
+        { n: '0.853', l: 'test AUC' },
+      ],
+      diagram: {
+        rows: [['7,043 records', 'cleaning + EDA', 'hypothesis tests', '*model + SHAP', 'A/B test + ROI']],
+        note: null,
+      },
+      highlights: [
+        ['Main driver', 'Month-to-month contracts churn 36 points more than annual ones, confirmed with chi-square and CMH tests.'],
+        ['Explainable model', 'Chose tuned logistic regression over a stronger ensemble because it is within 1 SE and easy to explain.'],
+        ['Costed decision', 'A retention discount breaks even at a 4.3-point churn drop; a pre-registered rule decides the roll-out.'],
+      ],
+      tags: ['Python', 'Pandas', 'Scikit-Learn', 'SHAP', 'Statistics', 'Excel'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/Telco-churn-analysis' }],
+      caseStudy: {
+        stack: ['Python', 'Pandas', 'NumPy', 'SciPy', 'Scikit-Learn', 'LightGBM', 'SHAP', 'Jupyter', 'Pytest'],
+        problem:
+          'A telecom provider loses 26.5% of its customers in a quarter. Leadership needs to know what that costs, which customers are at risk and why, and whether a retention offer is worth the money.',
+        solution:
+          'A documented analysis from problem framing to a business decision. Cleaning decisions are logged, every driver is tested with effect sizes and confidence intervals, and 18 model configurations are compared before choosing an explainable one. The work ends with an A/B test design that sizes the sample, simulates the result and calculates the break-even point.',
+        features: [
+          'Churn costs 30.5% of monthly recurring revenue, about $1.37M in expected lifetime revenue',
+          'Contract type is the biggest driver (42.7% vs 6.8% churn, Cramér\'s V = 0.41); payment method, fibre service and short tenure also confirmed',
+          'Hypothesis tests (chi-square, Mann-Whitney, z-tests, CMH) with Holm correction',
+          '18 model configurations at CV AUC 0.83–0.87; tuned logistic regression selected by the 1-SE rule, test AUC 0.853, well calibrated',
+          'Odds ratios and SHAP to explain why each customer is at risk',
+          'Power analysis: 1,126 customers per arm, or 1,513 for the target segment, so the test runs in two waves',
+          'Break-even at a 4.3-point churn reduction, with sensitivity from 2.4 to 7.5 points',
+          'Reusable code with 48 automated tests and a script that scores new customers',
+        ],
+      },
+    },
+    {
+      id: 'insurance',
+      title: 'Insurance Premium Prediction',
+      subtitle: 'risk-based pricing',
+      kind: 'pricing model + automation',
+      summary:
+        'Places each applicant in a Low, Medium or High premium band from risk factors derived automatically from their details.',
+      diagram: {
+        rows: [['applicant details', 'validation', '*risk factors', 'classifier', 'premium band']],
+        note: null,
+      },
+      bullets: [
+        'Derives BMI, age group, lifestyle risk and city tier from raw input',
+        'Returns the predicted band, a confidence score and each class probability',
+        'Automated, validated service packaged with Docker',
+      ],
+      tags: ['Python', 'Scikit-Learn', 'FastAPI', 'Pydantic', 'Docker'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/Insurance-premium-prediction' }],
+      caseStudy: {
+        stack: ['Python', 'Scikit-Learn', 'FastAPI', 'Pydantic v2', 'Docker'],
+        problem:
+          'Premium decisions depend on a handful of risk factors, but raw application details such as height, weight, age and city do not express those factors directly.',
+        solution:
+          'A service that validates each application, turns raw details into risk factors and returns a premium band with the probability of each band, so the decision and its confidence are both visible.',
+        features: [
+          'BMI calculated from height and weight',
+          'Age groups: young (under 25), adult (25–44), middle-aged (45–59), senior (60+)',
+          'Lifestyle risk: high for smokers with BMI over 30, medium for smokers or BMI over 27, otherwise low',
+          'City tier 1, 2 or 3 from maintained city lists',
+          'Input validation, health check with model version, and a Docker image for deployment',
+        ],
+      },
+    },
+    {
+      id: 'loan',
+      title: 'Loan Default Risk',
+      subtitle: 'credit risk',
+      kind: 'credit risk model',
+      summary: 'Predicts whether a loan will be fully paid or charged off from borrower credit features, with an explanation for each decision.',
+      diagram: { rows: [['borrower features', 'validation', '*default model', 'SHAP reasons', 'decision log']], note: null },
+      tags: ['Python', 'Scikit-Learn', 'SHAP', 'FastAPI', 'Docker'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/Loan-Default-Risk-Prediction-API' }],
+      caseStudy: {
+        stack: ['Python', 'Scikit-Learn', 'Pandas', 'NumPy', 'SHAP', 'FastAPI', 'Docker'],
+        problem: 'Lenders need to judge borrower risk before approving a loan, and need to explain why an application looks risky.',
+        solution:
+          'A model that scores default risk from loan amount, term, interest rate, grade, income, debt-to-income ratio and employment details, served as an automated service that explains each prediction.',
+        features: [
+          'Predicts Fully Paid or Charged Off with a confidence score',
+          'SHAP explanations showing which features drove each decision',
+          'Every request validated, given a unique ID and logged for audit',
+          'Packaged with Docker for repeatable deployment',
+        ],
+      },
+    },
+    {
+      id: 'machinefailure',
+      title: 'Machine Failure Prediction',
+      subtitle: 'equipment risk',
+      kind: 'predictive maintenance',
+      summary: 'Predicts whether a machine will fail, and the failure type, from its operating conditions.',
+      diagram: { rows: [['sensor readings', '*Random Forest', 'failure type']], note: null },
+      tags: ['Python', 'Scikit-Learn', 'Pandas', 'Streamlit'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/machine-failure-prediction' }],
+      caseStudy: {
+        stack: ['Python', 'Scikit-Learn', 'Pandas', 'Streamlit'],
+        problem: 'Unplanned equipment failure stops production. Spotting the conditions that lead to failure lets maintenance happen before a breakdown.',
+        solution:
+          'A Random Forest classifier trained on a predictive maintenance dataset, with a simple app where an engineer enters operating conditions and sees the expected failure type.',
+        features: [
+          'Inputs: machine quality grade, air and process temperature, rotational speed, torque and tool wear',
+          'Failure types: heat dissipation, overstrain, power, random and tool wear failure',
+          'Data exploration and model training documented in a notebook',
+        ],
+      },
+    },
+    {
+      id: 'streetaudit',
+      title: 'Roadside Hazard Audit',
+      subtitle: 'infrastructure hazards',
+      kind: 'computer vision + rules',
+      summary: 'Audits roadside photos for trees that endanger utility poles or the road, replacing manual surveys.',
+      diagram: { rows: [['road photo', 'YOLO segmentation', 'distance estimate', '*hazard rules']], note: null },
+      tags: ['Python', 'YOLO', 'OpenCV', 'Streamlit'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/street-audit' }],
+      caseStudy: {
+        stack: ['Python', 'Ultralytics YOLO', 'OpenCV', 'NumPy', 'Streamlit'],
+        problem: 'Trees growing near power lines and over roads are a hazard, and checking them by manual survey is slow.',
+        solution:
+          'A custom-trained segmentation model finds poles and trees in a roadside photo, a camera model estimates distances, and clear rules classify each tree as safe or hazardous.',
+        features: [
+          'Hand-labelled dataset and custom-trained YOLO segmentation model',
+          'Distance to each pole and spacing between poles from a pinhole camera model',
+          'A tree is flagged when it is taller than the nearest pole, overhangs the road centre, or stands too close to a pole',
+          'Annotated, downloadable audit image with a summary',
+          'Prototype for the later SmartRoad Audit platform',
+        ],
+      },
+    },
+    {
+      id: 'rideops',
+      title: 'Support Escalation Analysis',
+      subtitle: 'process improvement',
+      kind: 'data analysis + automation',
+      live: true,
+      summary: 'Diagnosed why a support backlog grew 60% and built a check that stops avoidable escalations.',
+      diagram: { rows: [['1,444 tickets', 'root-cause analysis', '*pre-escalation check', 'measured impact']], note: null },
+      tags: ['Python', 'Pandas', 'Data Analysis', 'Automation'],
+      links: [
+        { label: 'live demo', href: 'https://rideops-escalation-check.vercel.app' },
+        { label: 'code', href: 'https://github.com/Ankur377823/rideops-escalation-check' },
+      ],
+      caseStudy: {
+        stack: ['Python', 'Pandas', 'Jupyter', 'FastAPI', 'React'],
+        problem:
+          'Open support tickets rose 60% in two months. More tickets were arriving, and every stage of handling had slowed, so the average ticket stayed open a fifth longer.',
+        solution:
+          'The data showed that 57% of escalations to engineering came back without a fix, and 68% of engineering trips went to tickets it did not fix. I built a pre-escalation check that shows ticket history and known issues, runs a checklist, writes the handoff note and logs every decision so the effect can be measured.',
+        features: [
+          '486 of 1,444 tickets escalated; 275 of them (57%) returned without an engineering fix',
+          'Each extra trip to engineering added about two days and lowered the rating',
+          'Monitor mode warns about gaps; enforce mode blocks escalation until the checklist is complete',
+          'Dashboard with weekly measures for the support lead, plus a four-page write-up and a four-week plan',
+        ],
+        liveNote: 'The demo API runs on a free server, so the first load can take up to a minute.',
+      },
+    },
+    {
+      id: 'rain',
+      title: 'Rain Prediction',
+      subtitle: 'weather risk',
+      kind: 'weather data model',
+      summary: 'Predicts whether it will rain tomorrow at about 50 Australian weather stations from today\'s observations.',
+      diagram: { rows: [['weather observations', 'encoding', '*neural network', 'rain tomorrow']], note: null },
+      tags: ['Python', 'Keras', 'Pandas', 'Streamlit'],
+      links: [{ label: 'code', href: 'https://github.com/Ankur377823/Rain-prediction-in-australia' }],
+      caseStudy: {
+        stack: ['Python', 'TensorFlow / Keras', 'Pandas', 'Streamlit'],
+        problem: 'Weather drives risk for outdoor work and infrastructure, and next-day rain is a common planning question.',
+        solution: 'A neural network trained on historical Australian weather observations, with an app that takes today\'s readings and predicts rain tomorrow.',
+        features: [
+          'Inputs: temperature, rainfall, evaporation, sunshine, wind, humidity, pressure and cloud cover',
+          'Covers about 50 weather stations',
+          'Data preparation and training documented in a notebook',
+        ],
+      },
+    },
+  ],
+  projectsIntro: 'Risk, analysis and automation projects: infrastructure hazards, equipment failure, pricing, credit risk and loss analysis.',
   wingback: {
     points: [
       ['Data checks', 'Built a Python tool that checks data for sensitive information and misuse, and labels each finding for review.'],
@@ -367,8 +560,8 @@ export const riskLens = {
     { group: 'engineering', items: ['Structural analysis', 'Construction methods', 'EPC projects', 'AutoCAD', 'STAAD.Pro', 'Autodesk Robot', 'MATLAB'] },
     { group: 'data + analysis', items: ['MS Excel (pivots, lookups, modelling)', 'PowerPoint', 'SQL', 'Python (Pandas, NumPy, Matplotlib)', 'Statistics', 'XGBoost', 'SHAP'] },
   ],
-  skillsIntro: 'Engineering software, data analysis and the programming tools I use to measure and explain risk.',
-  contactNote: 'open to engineering underwriting roles from 2027 — write to me:',
+  skillsIntro: 'Engineering software, data analysis and the automation tools I use to measure and explain risk.',
+  contactNote: 'open to risk, analytics and engineering roles from 2027 — write to me:',
 };
 
 const R = riskLens.show;
@@ -376,11 +569,12 @@ if (R) profile.resume = riskLens.resume;
 
 export const about = R ? riskLens.about : baseAbout;
 export const stickies = R ? riskLens.stickies : baseStickies;
+const allProjects = [...baseProjects, ...riskLens.extraProjects];
 export const projects = R
-  ? [
-      ...riskLens.projectsFirst.map((id) => baseProjects.find((p) => p.id === id)),
-      ...baseProjects.filter((p) => !riskLens.projectsFirst.includes(p.id)),
-    ]
+  ? riskLens.projectIds.map((id) => {
+      const p = allProjects.find((x) => x.id === id);
+      return { ...p, featured: riskLens.featuredIds.includes(id) };
+    })
   : baseProjects;
 export const experience = R
   ? baseExperience.map((e, i) => (i === 0 ? { ...e, ...riskLens.wingback } : e))
@@ -398,6 +592,7 @@ export const copy = {
     : 'Selected engineering work: full-stack automation, production APIs, AI security and computer vision.',
   skillsIntro: R ? riskLens.skillsIntro : 'Languages, frameworks and tools I use to build and ship production systems.',
   contactNote: R ? riskLens.contactNote : 'open to SWE roles from 2027 — write to me:',
+  smallerTitle: R ? riskLens.smallerTitle : 'smaller builds, same care →',
 };
 
 export const sections = [
