@@ -17,20 +17,20 @@ export const profile = {
   ],
 };
 
-export const about = [
+const baseAbout = [
   "I'm a final-year B.Tech student at NIT Calicut. This summer (May–July 2026) I interned as a software engineer at Wingback Security, working on security for AI coding agents.",
   'On the side I built and still run Job Bot, a live AI job-application platform that 20 people use. I work mainly in Python, FastAPI and SQL, and I use Claude Code and Cursor every day.',
   'What I care about most is building tools and automations that people actually use.',
 ];
 
-export const stickies = [
+const baseStickies = [
   { big: 'Wingback', text: 'former SWE intern', color: 'yellow' },
   { big: 'NIT Calicut', text: 'final-year B.Tech', color: 'green' },
   { big: 'GRiD 8.0', text: 'Flipkart national semifinalist', color: 'pink' },
   { big: '800+', text: 'LeetCode problems solved', color: 'blue' },
 ];
 
-export const projects = [
+const baseProjects = [
   {
     id: 'jobbot',
     featured: true,
@@ -245,7 +245,7 @@ export const projects = [
   },
 ];
 
-export const experience = [
+const baseExperience = [
   {
     role: 'Software Engineering Intern (AI Security)',
     org: 'Wingback Security',
@@ -281,14 +281,14 @@ export const experience = [
   },
 ];
 
-export const milestones = [
+const baseMilestones = [
   { label: 'National engineering challenge', title: 'National Semifinalist – Flipkart GRiD 8.0', text: "Reached the national semifinal of Flipkart's engineering challenge." },
   { label: 'National hackathon', title: '2nd Place – Yuva Manthan Hackathon (2024)', text: 'Placed second nationally as a team.' },
   { label: 'Algorithms + problem solving', title: '800+ LeetCode problems solved', text: 'Global rank under 60,000.' },
   { label: 'Product launch', title: 'Job Bot – 20 live users', text: 'Launched it and still run it in production.' },
 ];
 
-export const skills = [
+const baseSkills = [
   { group: 'languages', items: ['Python', 'C++', 'SQL'] },
   { group: 'backend + web', items: ['FastAPI', 'React', 'Pydantic', 'SQLAlchemy', 'Pytest', 'Playwright', 'Chrome Extensions'] },
   { group: 'AI + ML', items: ['PyTorch', 'Scikit-Learn', 'YOLO (Ultralytics)', 'OpenCV', 'ONNX Runtime', 'Gemini API', 'OpenAI API', 'NumPy', 'Pandas'] },
@@ -308,7 +308,100 @@ export const education = [
   { when: '2020 – 2021', school: 'Keshav Saraswati Vidya Mandir', degree: 'Class X (Secondary)', score: '82.2%' },
 ];
 
+/* ------------------------------------------------------------------
+   TEMPORARY: engineering underwriting / risk version of the site.
+   While show is true, the hero, stickies, about, projects order, Wingback
+   points, skills, milestones, contact note and resume all lean toward
+   engineering underwriting. Set show to false to bring back the normal site.
+   ------------------------------------------------------------------ */
+export const riskLens = {
+  show: true,
+  resume: '/assets/resume-engineering-risk.pdf',
+  hero: {
+    note: 'civil engineer who works with data — infrastructure risk, pricing, analytics ↓',
+    lede: [
+      "I'm a final-year Civil Engineering student at NIT Calicut who uses Excel, SQL and Python to",
+      'measure risk',
+      ', from roadside hazards to insurance pricing. I want to build a career in engineering underwriting.',
+    ],
+  },
+  stickies: [
+    { big: 'CGPA 8.24', text: 'B.Tech Civil, NIT Calicut', color: 'yellow' },
+    { big: 'Wingback', text: 'former SWE intern', color: 'green' },
+    { big: 'GRiD 8.0', text: 'Flipkart national semifinalist', color: 'pink' },
+    { big: 'Excel + SQL', text: 'Python for risk analysis', color: 'blue' },
+  ],
+  about: [
+    "I'm a final-year Civil Engineering student at NIT Calicut with a strong interest in construction and infrastructure risk. I know the basics of structural analysis and how large projects are built.",
+    'This summer I interned as a software engineer at Wingback Security, building tools that check data, flag problems and send risky cases for manual review.',
+    'I work in Excel, SQL and Python, explain technical findings clearly to non-technical people, and want to build a long-term career in engineering underwriting and risk management.',
+  ],
+  aboutCard: {
+    currently: 'engineering underwriting and risk',
+    tools: 'Excel, SQL, Python, STAAD.Pro, AutoCAD',
+  },
+  title: 'Engineering risk',
+  intro:
+    'Civil engineering taught me how infrastructure is built. Working with data taught me to measure what can go wrong, how likely it is and what it would cost. This is where the two meet.',
+  note: 'engineering judgement, backed by data',
+  items: [
+    { label: 'infrastructure risk', title: 'Risk scores for road segments', text: 'SmartRoad scores every road segment from 0 to 100 on five weighted factors: gradient, curvature, speed, traffic and pedestrian activity.' },
+    { label: 'likelihood × consequence', title: 'Priority from a risk matrix', text: 'Grades each pothole with the IRC:SP:88-2019 likelihood × consequence matrix to set its risk level and repair priority.' },
+    { label: 'asset monitoring', title: 'Roadside hazards from video', text: 'Trained a YOLO model on hand-labelled roadside video to count poles and trees, then measured their spacing to flag hazards and replace manual surveys.' },
+    { label: 'pricing', title: 'Insurance premium prediction', text: 'A classifier that places customers in Low, Medium or High premium bands, using engineered risk drivers such as BMI, age group, lifestyle risk and city tier.' },
+    { label: 'loss analysis', title: 'Churn analysis on 7,043 records', text: 'Found churn cost about 30% of monthly revenue, confirmed contract type as the main driver with a chi-square test, and chose an explainable model (AUC 0.85) using SHAP.' },
+    { label: 'business decisions', title: 'A/B test with break-even maths', text: 'Designed a retention A/B test with sample-size and break-even calculations so the result could support a business decision.' },
+  ],
+  projectsIntro: 'Engineering and data work: infrastructure risk, computer vision, pricing models and production APIs.',
+  projectsFirst: ['smartroad'],
+  wingback: {
+    points: [
+      ['Data checks', 'Built a Python tool that checks data for sensitive information and misuse, and labels each finding for review.'],
+      ['Decision rules', 'Wrote rules that decide whether a request is allowed, blocked or sent for manual review, and documented them for the team.'],
+      ['Investigation', 'Used SQL and logs to investigate problems, confirm results and report findings; wrote 32 automated tests.'],
+    ],
+    tags: ['Python', 'SQL', 'Data Analysis', 'Risk Rules', 'Documentation'],
+    note: null,
+  },
+  skills: [
+    { group: 'engineering', items: ['Structural analysis', 'Construction methods', 'EPC projects', 'AutoCAD', 'STAAD.Pro', 'Autodesk Robot', 'MATLAB'] },
+    { group: 'data + analysis', items: ['MS Excel (pivots, lookups, modelling)', 'PowerPoint', 'SQL', 'Python (Pandas, NumPy, Matplotlib)', 'Statistics', 'XGBoost', 'SHAP'] },
+  ],
+  skillsIntro: 'Engineering software, data analysis and the programming tools I use to measure and explain risk.',
+  contactNote: 'open to engineering underwriting roles from 2027 — write to me:',
+};
+
+const R = riskLens.show;
+if (R) profile.resume = riskLens.resume;
+
+export const about = R ? riskLens.about : baseAbout;
+export const stickies = R ? riskLens.stickies : baseStickies;
+export const projects = R
+  ? [
+      ...riskLens.projectsFirst.map((id) => baseProjects.find((p) => p.id === id)),
+      ...baseProjects.filter((p) => !riskLens.projectsFirst.includes(p.id)),
+    ]
+  : baseProjects;
+export const experience = R
+  ? baseExperience.map((e, i) => (i === 0 ? { ...e, ...riskLens.wingback } : e))
+  : baseExperience;
+export const milestones = baseMilestones;
+export const skills = R ? [...riskLens.skills, ...baseSkills] : baseSkills;
+
+export const copy = {
+  heroNote: R ? riskLens.hero.note : null,
+  heroLede: R ? riskLens.hero.lede : null,
+  aboutCurrently: R ? riskLens.aboutCard.currently : 'software engineering',
+  aboutTools: R ? riskLens.aboutCard.tools : 'Python, FastAPI, SQL, Claude Code, Cursor',
+  projectsIntro: R
+    ? riskLens.projectsIntro
+    : 'Selected engineering work: full-stack automation, production APIs, AI security and computer vision.',
+  skillsIntro: R ? riskLens.skillsIntro : 'Languages, frameworks and tools I use to build and ship production systems.',
+  contactNote: R ? riskLens.contactNote : 'open to SWE roles from 2027 — write to me:',
+};
+
 export const sections = [
+  ...(R ? [{ id: 'risk', label: 'risk' }] : []),
   { id: 'about', label: 'about' },
   { id: 'work', label: 'work' },
   { id: 'experience', label: 'experience' },

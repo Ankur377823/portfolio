@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { m, useScroll, useTransform } from 'motion/react';
-import { about, education, experience, milestones, skills } from '../data';
+import { about, copy, education, experience, milestones, riskLens, skills } from '../data';
 import { Heading, Note, Reveal, Squiggle, Tick, viewportOnce } from './Ink';
 
 export function About() {
@@ -18,15 +18,41 @@ export function About() {
         <Reveal className="about__card" delay={0.15}>
           <span className="mono muted">currently</span>
           <p>
-            Finishing my final year at <Squiggle>NIT Calicut</Squiggle>, open to software engineering roles from
+            Finishing my final year at <Squiggle>NIT Calicut</Squiggle>, open to {copy.aboutCurrently} roles from
             2027.
           </p>
           <span className="mono muted">last role</span>
           <p>SWE Intern · Wingback Security · May–Jul 2026</p>
           <span className="mono muted">daily tools</span>
-          <p>Python, FastAPI, SQL, Claude Code, Cursor</p>
+          <p>{copy.aboutTools}</p>
         </Reveal>
       </div>
+    </section>
+  );
+}
+
+/** Temporary: risk-analysis angle on existing work. Hidden when riskLens.show is false. */
+export function RiskLens() {
+  if (!riskLens.show) return null;
+  return (
+    <section id="risk" aria-labelledby="risk-h">
+      <Heading page="p. ½ — engineering + data" title={riskLens.title} id="risk-h" />
+      <p className="section__intro">{riskLens.intro}</p>
+      <ul className="milestones">
+        {riskLens.items.map((r, i) => (
+          <Reveal as="li" key={r.title} delay={(i % 2) * 0.08} className="milestone">
+            <Tick delay={0.25 + i * 0.1} />
+            <div>
+              <span className="mono muted">{r.label}</span>
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </ul>
+      <Note tilt={-1.5} color="red" size="23px" delay={0.4} className="risk__note">
+        {riskLens.note}
+      </Note>
     </section>
   );
 }
@@ -106,7 +132,7 @@ export function Tools() {
   return (
     <section id="tools" aria-labelledby="tools-h">
       <Heading page="p. 5 — my toolbox" title="Skills" id="tools-h" />
-      <p className="section__intro">Languages, frameworks and tools I use to build and ship production systems.</p>
+      <p className="section__intro">{copy.skillsIntro}</p>
       <div className="skills">
         {skills.map((s, i) => (
           <Reveal

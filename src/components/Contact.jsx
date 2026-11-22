@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, m } from 'motion/react';
-import { profile, WEB3FORMS_KEY } from '../data';
+import { copy, profile, WEB3FORMS_KEY } from '../data';
 import { Heading, Note, Reveal } from './Ink';
 
 function CopyEmail() {
@@ -144,7 +144,7 @@ export default function Contact() {
       <div className="contact">
         <Reveal className="envelope" initial={{ opacity: 0, y: 24, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: -0.5 }}>
           <Note size="26px" delay={0.3}>
-            open to SWE roles from 2027 — write to me:
+            {copy.contactNote}
           </Note>
           <CopyEmail />
           <dl className="envelope__meta mono">

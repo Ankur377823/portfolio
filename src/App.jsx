@@ -2,7 +2,7 @@ import { LazyMotion, MotionConfig, domAnimation } from 'motion/react';
 import { Footer, Header, PageTabs, ScrollInk, useActiveSection } from './components/Chrome';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import { About, Education, Experience, Milestones, Tools } from './components/Sections';
+import { About, Education, Experience, Milestones, RiskLens, Tools } from './components/Sections';
 import Contact from './components/Contact';
 
 export default function App() {
@@ -20,6 +20,7 @@ export default function App() {
           <Header active={active} />
           <main id="main">
             <Hero />
+            <RiskLens />
             <About />
             <Projects />
             <Experience />

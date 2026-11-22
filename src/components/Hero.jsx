@@ -1,5 +1,5 @@
 import { m } from 'motion/react';
-import { profile, stickies } from '../data';
+import { copy, profile, stickies } from '../data';
 import { Circled, Note } from './Ink';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -77,7 +77,7 @@ export default function Hero() {
           </m.span>
           <Name />
           <Note size="clamp(22px, 3vw, 28px)" delay={0.7} className="hero__note">
-            {profile.role.toLowerCase()} — {profile.focus} ↓
+            {copy.heroNote || `${profile.role.toLowerCase()} — ${profile.focus} ↓`}
           </Note>
           <m.p
             className="hero__lede"
@@ -85,9 +85,18 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease }}
           >
-            I build backend systems, AI automation and machine learning pipelines that{' '}
-            <Circled delay={1.6}>run in production</Circled>. Right now I'm finishing my B.Tech at NIT
-            Calicut, fresh off an internship at Wingback Security.
+            {copy.heroLede ? (
+              <>
+                {copy.heroLede[0]} <Circled delay={1.6}>{copy.heroLede[1]}</Circled>
+                {copy.heroLede[2]}
+              </>
+            ) : (
+              <>
+                I build backend systems, AI automation and machine learning pipelines that{' '}
+                <Circled delay={1.6}>run in production</Circled>. Right now I'm finishing my B.Tech at NIT
+                Calicut, fresh off an internship at Wingback Security.
+              </>
+            )}
           </m.p>
           <m.div
             className="hero__actions"

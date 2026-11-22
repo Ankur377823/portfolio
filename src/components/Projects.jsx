@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, m } from 'motion/react';
-import { projects } from '../data';
+import { copy, projects } from '../data';
 import { Arrow, Heading, Note, Reveal, viewportOnce } from './Ink';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -291,7 +291,7 @@ export default function Projects() {
     <section id="work" aria-labelledby="work-h">
       <Heading page="p. 2 — things I built" title="Projects" id="work-h" />
       <p className="section__intro">
-        Selected engineering work: full-stack automation, production APIs, AI security and computer vision.
+        {copy.projectsIntro}
       </p>
 
       {featured.map((p, i) => (
