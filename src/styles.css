@@ -333,8 +333,9 @@ section { margin-top: 120px; position: relative; }
   .sticky { width: calc(50% - 7px); min-height: 112px; }
   .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
   .hero__mail { width: 100%; }
-  .proj__stats { gap: 22px; }
-  .proj__stats b { font-size: 28px; }
+  .proj__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .proj__stats b { font-size: 25px; }
+  .proj__stats span { display: block; margin-top: 4px; font-size: 11.5px; line-height: 1.35; }
 }
 @media (max-width: 360px) {
   .sticky { font-size: 18px; padding: 12px; }

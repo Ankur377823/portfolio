@@ -100,11 +100,11 @@ function ContactForm() {
       </div>
       <label>
         <span className="mono">subject</span>
-        <input name="subject" type="text" maxLength={150} required placeholder="Backend role at our team" />
+        <input name="subject" type="text" maxLength={150} required placeholder={copy.subjectPlaceholder} />
       </label>
       <label>
         <span className="mono">message</span>
-        <textarea name="message" rows={5} maxLength={5000} required placeholder="Hi Ankur, I saw Job Bot and…" />
+        <textarea name="message" rows={5} maxLength={5000} required placeholder={copy.messagePlaceholder} />
       </label>
       <div className="letter__foot">
         <m.button
@@ -138,9 +138,7 @@ export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-h">
       <Heading page="p. 7 — say hi" title="Contact" id="contact-h" />
-      <p className="section__intro">
-        Let's talk about software engineering opportunities, backend projects and collaborations.
-      </p>
+      <p className="section__intro">{copy.contactIntro}</p>
       <div className="contact">
         <Reveal className="envelope" initial={{ opacity: 0, y: 24, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: -0.5 }}>
           <Note size="26px" delay={0.3}>

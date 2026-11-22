@@ -344,7 +344,7 @@ export const riskLens = {
     'What can go wrong, how likely it is, and what it would cost.',
   note: 'engineering judgement, backed by data',
   items: [
-    { label: 'infrastructure + equipment', title: 'Engineering risk', text: 'Risk scores for road segments and machine failure prediction.' },
+    { label: 'infrastructure + equipment', title: 'Infrastructure and equipment', text: 'Risk scores for road segments and machine failure prediction.' },
     { label: 'pricing', title: 'Risk-based pricing', text: 'Premium bands and loan default risk from risk factors.' },
     { label: 'loss analysis', title: 'Loss drivers', text: 'Statistical tests and a costed, break-even retention test.' },
     { label: 'automation', title: 'Automated decisions', text: 'Rules that allow, block or refer cases for manual review.' },
@@ -516,6 +516,12 @@ export const riskLens = {
   ],
   skillsIntro: 'Engineering, data and automation tools.',
   keepSkillGroups: ['AI + ML', 'databases'],
+  skillOverrides: { 'AI + ML': ['Scikit-Learn', 'XGBoost', 'SHAP', 'OpenCV', 'YOLO', 'Pandas', 'NumPy'] },
+  experienceIntro: 'Internship and leadership.',
+  milestonesIntro: 'National engineering competitions.',
+  contactIntro: "Let's talk about risk, analytics and engineering opportunities.",
+  subjectPlaceholder: 'Analyst role at our team',
+  messagePlaceholder: 'Hi Ankur, I saw your risk projects and…',
   keepMilestones: ['GRiD 8.0', 'Yuva Manthan'],
   dropExperience: ['Google Developer Student Club'],
   contactNote: 'open to risk, analytics and engineering roles from 2027 — write to me:',
@@ -542,7 +548,12 @@ export const milestones = R
   ? baseMilestones.filter((m) => riskLens.keepMilestones.some((k) => m.title.includes(k)))
   : baseMilestones;
 export const skills = R
-  ? [...riskLens.skills, ...baseSkills.filter((g) => riskLens.keepSkillGroups.includes(g.group))]
+  ? [
+      ...riskLens.skills,
+      ...baseSkills
+        .filter((g) => riskLens.keepSkillGroups.includes(g.group))
+        .map((g) => ({ ...g, items: riskLens.skillOverrides[g.group] || g.items })),
+    ]
   : baseSkills;
 
 export const copy = {
@@ -556,6 +567,13 @@ export const copy = {
   skillsIntro: R ? riskLens.skillsIntro : 'Languages, frameworks and tools I use to build and ship production systems.',
   contactNote: R ? riskLens.contactNote : 'open to SWE roles from 2027 — write to me:',
   smallerTitle: R ? riskLens.smallerTitle : 'smaller builds, same care →',
+  experienceIntro: R ? riskLens.experienceIntro : 'Internship, leadership and student engineering work.',
+  milestonesIntro: R ? riskLens.milestonesIntro : 'National competitions, competitive programming and a live product launch.',
+  contactIntro: R
+    ? riskLens.contactIntro
+    : "Let's talk about software engineering opportunities, backend projects and collaborations.",
+  subjectPlaceholder: R ? riskLens.subjectPlaceholder : 'Backend role at our team',
+  messagePlaceholder: R ? riskLens.messagePlaceholder : 'Hi Ankur, I saw Job Bot and…',
 };
 
 export const sections = [

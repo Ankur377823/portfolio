@@ -65,7 +65,7 @@ export function Experience() {
   return (
     <section id="experience" aria-labelledby="exp-h">
       <Heading page="p. 3 — where I've been" title="Experience" id="exp-h" />
-      <p className="section__intro">Internship, leadership and student engineering work.</p>
+      <p className="section__intro">{copy.experienceIntro}</p>
       <div className="timeline" ref={ref}>
         <m.span className="timeline__line" style={{ scaleY }} aria-hidden="true" />
         {experience.map((e, i) => (
@@ -111,7 +111,7 @@ export function Milestones() {
   return (
     <section id="milestones" aria-labelledby="ms-h">
       <Heading page="p. 4 — ticked off" title="Milestones" id="ms-h" />
-      <p className="section__intro">National competitions, competitive programming and a live product launch.</p>
+      <p className="section__intro">{copy.milestonesIntro}</p>
       <ul className="milestones">
         {milestones.map((m, i) => (
           <Reveal as="li" key={m.title} delay={i * 0.08} className="milestone">
