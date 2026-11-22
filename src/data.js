@@ -20,7 +20,7 @@ export const profile = {
 export const about = [
   "I'm a final-year B.Tech student at NIT Calicut. This summer (May–July 2026) I interned as a software engineer at Wingback Security, working on security for AI coding agents.",
   'On the side I built and still run Job Bot, a live AI job-application platform that 20 people use. I work mainly in Python, FastAPI and SQL, and I use Claude Code and Cursor every day.',
-  "800+ LeetCode problems and a Flipkart GRiD 8.0 national semifinal later, what I care about most is building tools and automations that people actually use.",
+  'What I care about most is building tools and automations that people actually use.',
 ];
 
 export const stickies = [
@@ -40,7 +40,7 @@ export const projects = [
     live: true,
     privateRepo: true,
     summary:
-      "A live AI platform, used by 20 people, that finds LinkedIn jobs, scores them against each user's resumes, fills Easy Apply forms through its own Chrome extension, and emails recruiters the right resume. Runs daily in Docker on Azure.",
+      'Finds LinkedIn jobs, applies through its own Chrome extension, and emails recruiters the right resume. Runs daily in Docker on Azure.',
     stats: [
       { n: '20', l: 'live users' },
       { n: '1,000+', l: 'applications sent' },
@@ -54,10 +54,9 @@ export const projects = [
       note: '↑ the server decides every form step, the extension just obeys',
     },
     highlights: [
-      ['Automated applying', 'Manifest V3 extension fills and submits LinkedIn Easy Apply forms, with every form step decided by the server.'],
-      ['AI form agent', "Reads each form page and answers from the user's profile and saved answers, asking only about new questions, even when a question is worded differently."],
-      ['Recruiter outreach', 'Finds HR emails and phone numbers with their source, then drafts follow-up emails and WhatsApp messages naming the role and job ID.'],
-      ['Reliable in production', 'Fixed a login outage caused by a network connection shared between threads, and added automatic database repair, daily backups and 150+ tests.'],
+      ['AI form agent', 'Answers screening questions from saved answers and asks only about new ones.'],
+      ['Recruiter outreach', 'Finds recruiter contacts and drafts follow-ups naming the role and job ID.'],
+      ['Reliable in production', 'Fixed a threading outage; added auto DB repair, daily backups and 150+ tests.'],
     ],
     tags: ['Python', 'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Gemini API', 'Gmail API', 'Chrome Extension (MV3)', 'Playwright', 'Docker', 'Azure'],
     links: [{ label: 'live demo', href: 'https://20-219-138-38.sslip.io' }],
@@ -88,15 +87,14 @@ export const projects = [
     kind: 'computer vision + full-stack',
     live: true,
     summary:
-      'Splits a road into segments, scores each for risk and builds an audit checklist, with an in-browser pothole scanner that grades potholes against Indian Roads Congress (IRC) standards.',
+      'Scores each road segment for risk and grades potholes against Indian Roads Congress (IRC) standards, right in the browser.',
     diagram: {
       rows: [['camera', '*YOLO26n-seg in browser', 'IRC grading', 'FastAPI']],
       note: null,
     },
     bullets: [
-      'Custom YOLO26n-seg model runs on-device via ONNX Runtime Web (WebGPU or INT8 WASM)',
-      'IRC:82-2015 grading and IRC:SP:88-2019 risk and repair-priority matrix',
-      'Browser inference cut backend memory from ~500 MB to ~90 MB',
+      'Custom YOLO26n-seg model runs on-device (WebGPU or INT8 WASM)',
+      'IRC:82-2015 grading and IRC:SP:88-2019 repair-priority matrix',
     ],
     margin: 'moved inference to the browser → backend RAM 500 MB → 90 MB',
     tags: ['React', 'FastAPI', 'PostgreSQL', 'YOLO', 'ONNX Runtime Web', 'Google Maps API'],
@@ -131,14 +129,13 @@ export const projects = [
     subtitle: 'cited document Q&A',
     kind: 'retrieval-augmented generation · open source',
     summary:
-      'Multi-user document Q&A platform that searches by meaning and by keywords, fuses and re-ranks the results, and answers with citations that a second model verifies.',
+      'Document Q&A that searches by meaning and keywords, and answers with citations a second model verifies.',
     diagram: {
       rows: [['query', 'dense + BM25', '*RRF fuse', 're-rank top 5', 'verified answer']],
       note: null,
     },
     bullets: [
-      'Dense + BM25 search fused with Reciprocal Rank Fusion, re-ranked to the top 5',
-      'Says "I don\'t know" when confidence is low; every citation is checked',
+      'Says "I don\'t know" when confidence is low',
       '71 tests at 83% coverage, CI on Python 3.11 and 3.12',
     ],
     tags: ['Python', 'FastAPI', 'OpenAI API', 'BM25', 'PostgreSQL', 'Docker'],
@@ -168,12 +165,7 @@ export const projects = [
     kind: 'AI security + red-teaming',
     live: true,
     summary:
-      'Automated red-teaming tool for Botpress Cloud chatbots. It attacks a live bot with prompt injections, jailbreaks and PII-leak attempts, and keeps an auditable history of every result.',
-    bullets: [
-      'Async client for the Botpress Chat API with connection checks',
-      'Attack batteries for prompt injection, jailbreaks and PII exfiltration',
-      '26 pytest tests against a mock Botpress server',
-    ],
+      'Attacks live Botpress chatbots with prompt injections, jailbreaks and PII-leak attempts.',
     diagram: { rows: [['attack battery', '*async Chat API client', 'live Botpress bot', 'verdict → SQLite']], note: null },
     tags: ['Python', 'FastAPI', 'Botpress Cloud', 'SQLite', 'Pytest'],
     links: [
@@ -201,12 +193,7 @@ export const projects = [
     kind: 'healthcare backend API',
     live: true,
     summary:
-      "Clinical API that merges a patient's medication lists from multiple sources and flags dosage conflicts, duplicate drug classes and risky drug interactions.",
-    bullets: [
-      'Rule-based engine for interactions and duplicate therapies',
-      'Versioned patient snapshots in MongoDB for a full audit trail',
-      '69 unit and integration tests, plus a web app for reviewing discrepancies',
-    ],
+      "Merges a patient's medication lists and flags dosage conflicts and risky interactions.",
     diagram: { rows: [['multi-source records', 'normalize', '*rule engine', 'flags']], note: null },
     tags: ['Python', 'FastAPI', 'MongoDB', 'Pytest', 'OpenAPI'],
     links: [
@@ -235,12 +222,7 @@ export const projects = [
     kind: 'machine learning API',
     live: true,
     summary:
-      'Machine learning API that predicts used-car prices in real time, with Redis caching for repeat queries and a containerized, monitored deployment.',
-    bullets: [
-      'Random Forest model served with JWT and API-key auth',
-      'Redis cache returns repeat predictions in under 15 ms',
-      'Docker Compose stack monitored with Prometheus and Grafana',
-    ],
+      'Predicts used-car prices in real time, with repeat queries served from Redis in under 15 ms.',
     diagram: { rows: [['request', 'JWT / API key', '*Redis cache', 'Random Forest'], ['Prometheus', 'Grafana']], note: null },
     tags: ['Python', 'FastAPI', 'Scikit-Learn', 'Redis', 'Docker'],
     links: [
@@ -300,10 +282,10 @@ export const experience = [
 ];
 
 export const milestones = [
-  { label: 'National engineering challenge', title: 'National Semifinalist – Flipkart GRiD 8.0', text: "Advanced to the national semifinal round of Flipkart GRiD 8.0, Flipkart's national engineering challenge for students from engineering colleges across India." },
-  { label: 'National hackathon', title: '2nd Place – Yuva Manthan Hackathon (2024)', text: 'Placed second nationally, building a working solution as a team under strict time constraints.' },
-  { label: 'Algorithms + problem solving', title: '800+ LeetCode problems solved', text: 'Global rank under 60,000, built on consistent practice across arrays, graphs, trees and dynamic programming.' },
-  { label: 'Product launch', title: 'Job Bot – 20 live users', text: 'Launched and run a live AI job-application platform that has sent 1,000+ applications and 600+ recruiter emails.' },
+  { label: 'National engineering challenge', title: 'National Semifinalist – Flipkart GRiD 8.0', text: "Reached the national semifinal of Flipkart's engineering challenge." },
+  { label: 'National hackathon', title: '2nd Place – Yuva Manthan Hackathon (2024)', text: 'Placed second nationally as a team.' },
+  { label: 'Algorithms + problem solving', title: '800+ LeetCode problems solved', text: 'Global rank under 60,000.' },
+  { label: 'Product launch', title: 'Job Bot – 20 live users', text: 'Launched it and still run it in production.' },
 ];
 
 export const skills = [
