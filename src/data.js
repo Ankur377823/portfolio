@@ -320,9 +320,9 @@ export const riskLens = {
   hero: {
     note: 'civil engineer who works with data — infrastructure risk, pricing, analytics ↓',
     lede: [
-      "I'm a final-year Civil Engineering student at NIT Calicut who uses Excel, SQL and Python to",
-      'measure risk',
-      ', from roadside hazards to insurance pricing. I want to build a career in engineering underwriting.',
+      'Final-year Civil Engineering student at NIT Calicut, combining an understanding of how infrastructure is built with data analysis to',
+      'assess engineering risk',
+      '. I am building towards a long-term career in underwriting and risk management.',
     ],
   },
   stickies: [
